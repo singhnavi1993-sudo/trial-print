@@ -1,0 +1,10 @@
+/* App specific styles can go here, but most will be in component modules or index.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
