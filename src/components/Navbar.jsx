@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Search, Sun, Moon, X } from 'lucide-react';
+import { Menu, Search, X } from 'lucide-react';
 import './Navbar.css';
 
 const dummySearchData = [
@@ -18,7 +18,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,14 +46,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY, isSearchOpen]);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark-mode');
-    } else {
-      document.documentElement.classList.remove('dark-mode');
-    }
-  }, [isDarkMode]);
 
   useEffect(() => {
     if (searchQuery.trim() === '') {
@@ -108,13 +99,6 @@ const Navbar = () => {
             aria-label="Toggle search"
           >
             {isSearchOpen ? <X size={20} /> : <Search size={20} />}
-          </button>
-          <button 
-            className="icon-btn" 
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         </div>
       </div>
