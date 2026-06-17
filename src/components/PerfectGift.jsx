@@ -40,13 +40,13 @@ const PerfectGift = () => {
     <section className="section-padding perfect-gift-section" ref={ref}>
       <div className="container">
         <motion.div 
-          className="section-header text-center"
-          initial={{ opacity: 0, y: -30 }}
+          className="section-header center-header"
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="section-title">Looking for a perfect Gift?</h2>
-          <p className="section-subtitle">Personalized gifts for everyone</p>
+          <h2>Looking for a perfect Gift?</h2>
+          <p className="subtitle">Personalized gifts for everyone</p>
         </motion.div>
 
         <motion.div 

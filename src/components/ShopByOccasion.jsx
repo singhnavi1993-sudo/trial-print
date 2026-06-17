@@ -38,13 +38,13 @@ const ShopByOccasion = () => {
     <section className="section-padding occasion-section" ref={ref}>
       <div className="container">
         <motion.div 
-          className="section-header text-center"
-          initial={{ opacity: 0, y: -30 }}
+          className="section-header center-header"
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="section-title text-yellow">Shop By Occasion</h2>
-          <p className="section-subtitle">Looking for a particular occasion?</p>
+          <h2>Shop By Occasion</h2>
+          <p className="subtitle">Looking for a particular occasion?</p>
         </motion.div>
 
         <motion.div 

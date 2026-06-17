@@ -43,13 +43,13 @@ const ShopByIndustry = () => {
     <section className="section-padding industry-section" ref={ref}>
       <div className="container">
         <motion.div 
-          className="section-header text-center"
-          initial={{ opacity: 0, y: -30 }}
+          className="section-header center-header"
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="section-title">Shop By Industry</h2>
-          <p className="section-subtitle">Which Industry do you belong to?</p>
+          <h2>Shop By Industry</h2>
+          <p className="subtitle">Which Industry do you belong to?</p>
         </motion.div>
 
         <motion.div 
