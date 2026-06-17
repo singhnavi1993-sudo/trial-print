@@ -1,0 +1,67 @@
+.b2b-section {
+  position: relative;
+  z-index: 10;
+  padding: 4rem 0;
+}
+
+.b2b-card {
+  background: linear-gradient(135deg, var(--color-yellow), #fcd34d);
+  border-radius: 20px;
+  padding: 4rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.b2b-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.b2b-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.b2b-title {
+  font-size: 2.5rem;
+  color: var(--color-black);
+  margin-bottom: 0.5rem;
+}
+
+.b2b-subtitle {
+  font-size: 2rem;
+  color: var(--color-red);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.b2b-desc {
+  font-size: 1.1rem;
+  color: rgba(0,0,0,0.8);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .b2b-card {
+    padding: 2rem;
+  }
+  .b2b-title {
+    font-size: 1.8rem;
+  }
+  .b2b-subtitle {
+    font-size: 1.5rem;
+  }
+}
