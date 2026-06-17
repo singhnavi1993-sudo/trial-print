@@ -4,13 +4,13 @@ import { useInView } from 'react-intersection-observer';
 import './ShopByIndustry.css';
 
 const industries = [
-  { name: 'Branding & Advertising', icon: '🎯' },
-  { name: 'Business & Corporate', icon: '🏢' },
-  { name: 'Education', icon: '📚' },
-  { name: 'Events', icon: '🎟️' },
-  { name: 'Healthcare', icon: '🏥' },
-  { name: 'Hotels & Restaurants', icon: '🏨' },
-  { name: 'Home Decor & Design', icon: '🛋️' }
+  { name: 'Branding & Advertising', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Business & Corporate', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Education', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Events', image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Healthcare', image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Hotels & Restaurants', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop' },
+  { name: 'Home Decor & Design', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop' }
 ];
 
 const ShopByIndustry = () => {
@@ -65,15 +65,15 @@ const ShopByIndustry = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05, 
-                rotateY: 10, 
-                rotateX: -10,
+                rotateY: 5, 
+                rotateX: -5,
                 boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
                 borderColor: 'var(--color-red)'
               }}
             >
-              <div className="industry-icon">{industry.icon}</div>
-              <h3 className="industry-name">{industry.name}</h3>
+              <div className="industry-image" style={{ backgroundImage: `url(${industry.image})` }}></div>
               <div className="industry-overlay"></div>
+              <h3 className="industry-name">{industry.name}</h3>
             </motion.div>
           ))}
         </motion.div>

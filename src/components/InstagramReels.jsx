@@ -5,13 +5,13 @@ import './InstagramReels.css';
 
 const InstagramIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
 
-const dummyReels = [
-  { id: 1, image: 'https://picsum.photos/seed/reel1/300/533', views: '12.5k' },
-  { id: 2, image: 'https://picsum.photos/seed/reel2/300/533', views: '8.2k' },
-  { id: 3, image: 'https://picsum.photos/seed/reel3/300/533', views: '45.1k' },
-  { id: 4, image: 'https://picsum.photos/seed/reel4/300/533', views: '3.4k' },
-  { id: 5, image: 'https://picsum.photos/seed/reel5/300/533', views: '21.8k' },
-  { id: 6, image: 'https://picsum.photos/seed/reel6/300/533', views: '19.2k' }
+const reelsData = [
+  { id: 1, image: 'https://images.unsplash.com/photo-1512418490979-9ce792d03952?q=80&w=300&h=533&auto=format&fit=crop', views: '12.5k' },
+  { id: 2, image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=300&h=533&auto=format&fit=crop', views: '8.2k' },
+  { id: 3, image: 'https://images.unsplash.com/photo-1557002664-c5a452bf9a1e?q=80&w=300&h=533&auto=format&fit=crop', views: '45.1k' },
+  { id: 4, image: 'https://images.unsplash.com/photo-1611078500742-057d383980bc?q=80&w=300&h=533&auto=format&fit=crop', views: '3.4k' },
+  { id: 5, image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=300&h=533&auto=format&fit=crop', views: '21.8k' },
+  { id: 6, image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=300&h=533&auto=format&fit=crop', views: '19.2k' }
 ];
 
 const InstagramReels = () => {
@@ -46,7 +46,7 @@ const InstagramReels = () => {
             }
           }}
         >
-          {dummyReels.map((reel) => (
+          {reelsData.map((reel) => (
             <motion.div 
               key={reel.id} 
               className="reel-card"

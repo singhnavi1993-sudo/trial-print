@@ -4,10 +4,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HeroSlider.css';
 
 const slides = [
-  { id: 1, image: 'https://picsum.photos/seed/print1/1920/800', title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
-  { id: 2, image: 'https://picsum.photos/seed/print2/1920/800', title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
-  { id: 3, image: 'https://picsum.photos/seed/print3/1920/800', title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' },
-  { id: 4, image: 'https://picsum.photos/seed/print4/1920/800', title: 'Custom Marketing Materials', subtitle: 'Brochures, flyers, and more.', buttonText: 'Explore Options' }
+  { id: 1, image: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1920&auto=format&fit=crop', title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
+  { id: 2, image: 'https://images.unsplash.com/photo-1594957685954-2b0e77d24ab9?q=80&w=1920&auto=format&fit=crop', title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
+  { id: 3, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1920&auto=format&fit=crop', title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' },
+  { id: 4, image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1920&auto=format&fit=crop', title: 'Custom Marketing Materials', subtitle: 'Brochures, flyers, and more.', buttonText: 'Explore Options' }
 ];
 
 const SLIDE_DURATION = 5000;

@@ -7,32 +7,32 @@ const products = [
     id: 1,
     name: 'Premium Visiting Cards',
     price: '$15.00',
-    primaryImage: 'https://picsum.photos/seed/card1a/400/400',
-    hoverImage: 'https://picsum.photos/seed/card1b/400/400',
+    primaryImage: 'https://images.unsplash.com/photo-1589041127168-9b1915731def?q=80&w=400&auto=format&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1557002664-c5a452bf9a1e?q=80&w=400&auto=format&fit=crop',
     category: 'Business Cards'
   },
   {
     id: 2,
     name: 'Glossy Flyers',
     price: '$25.00',
-    primaryImage: 'https://picsum.photos/seed/flyer1a/400/400',
-    hoverImage: 'https://picsum.photos/seed/flyer1b/400/400',
+    primaryImage: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=400&auto=format&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=400&auto=format&fit=crop',
     category: 'Flyers'
   },
   {
     id: 3,
     name: 'Custom T-Shirts',
     price: '$18.00',
-    primaryImage: 'https://picsum.photos/seed/tshirt1a/400/400',
-    hoverImage: 'https://picsum.photos/seed/tshirt1b/400/400',
+    primaryImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=400&auto=format&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=400&auto=format&fit=crop',
     category: 'Apparel'
   },
   {
     id: 4,
     name: 'Vinyl Banners',
     price: '$45.00',
-    primaryImage: 'https://picsum.photos/seed/banner1a/400/400',
-    hoverImage: 'https://picsum.photos/seed/banner1b/400/400',
+    primaryImage: 'https://images.unsplash.com/photo-1561089489-0268a83d4bb7?q=80&w=400&auto=format&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1555529733-0e670560f8e1?q=80&w=400&auto=format&fit=crop',
     category: 'Signs'
   }
 ];
