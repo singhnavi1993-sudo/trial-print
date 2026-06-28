@@ -47,7 +47,7 @@ function App() {
   const [showIntro, setShowIntro] = useState(true);
 
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router>
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
