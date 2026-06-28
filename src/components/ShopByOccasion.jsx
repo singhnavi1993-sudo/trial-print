@@ -4,10 +4,10 @@ import { useInView } from 'react-intersection-observer';
 import './ShopByOccasion.css';
 
 const occasions = [
-  { name: 'Award Night', bgImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop' },
-  { name: 'Celebrations', bgImage: 'https://images.unsplash.com/photo-1530103862676-de889dd08ce6?q=80&w=800&auto=format&fit=crop' },
-  { name: 'Corporate Events', bgImage: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop' },
-  { name: 'Weddings', bgImage: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop' }
+  { name: 'Award Night', bgImage: `${import.meta.env.BASE_URL}images/Shop by occassion/Award nights.jpg` },
+  { name: 'Celebrations', bgImage: `${import.meta.env.BASE_URL}images/Shop by occassion/celebration.jpg` },
+  { name: 'Corporate Events', bgImage: `${import.meta.env.BASE_URL}images/Shop by occassion/Corporate events.jpg` },
+  { name: 'Weddings', bgImage: `${import.meta.env.BASE_URL}images/Shop by occassion/wedding.jpg` }
 ];
 
 const ShopByOccasion = () => {
@@ -61,7 +61,7 @@ const ShopByOccasion = () => {
             >
               <div 
                 className="occasion-bg" 
-                style={{ backgroundImage: `url(${occasion.bgImage})` }}
+                style={{ backgroundImage: `url("${occasion.bgImage}")` }}
               ></div>
               <div className="occasion-overlay"></div>
               <div className="occasion-content">

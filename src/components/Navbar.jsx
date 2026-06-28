@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Search, X } from 'lucide-react';
+import { Menu, Search, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
 const dummySearchData = [
@@ -18,6 +18,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -73,7 +74,9 @@ const Navbar = () => {
     <header className={`navbar-header ${isScrolled ? 'scrolled' : ''} ${hidden ? 'hidden' : ''}`}>
       <div className="container navbar-container">
         <div className="navbar-left">
-          <button className="menu-btn"><Menu size={24} /></button>
+          <button className="menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
+            <Menu size={24} />
+          </button>
           <Link to="/" className="logo" onClick={() => setIsSearchOpen(false)}>
             <span className="text-primary">Print</span>
             <span className="text-red">&</span>
@@ -82,9 +85,33 @@ const Navbar = () => {
         </div>
         
         <nav className="navbar-nav desktop-only">
-          <Link to="/products" className="nav-link">Products</Link>
-          <Link to="/services" className="nav-link">Services</Link>
-          <Link to="/shop-by-industry" className="nav-link">Shop By Industry</Link>
+          
+          <div className="nav-dropdown">
+            <Link to="/industry" className="nav-link">
+              Shop By Industry <ChevronDown size={14} className="dropdown-icon" />
+            </Link>
+            <div className="nav-dropdown-menu">
+              {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
+                <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="nav-dropdown">
+            <Link to="/occasion" className="nav-link">
+              Shop By Occasion <ChevronDown size={14} className="dropdown-icon" />
+            </Link>
+            <div className="nav-dropdown-menu">
+              {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
+                <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <Link to="/about" className="nav-link">About Us</Link>
           <Link to="/contact" className="nav-link">Contact Us</Link>
         </nav>
@@ -151,6 +178,49 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-content">
+          <div className="mobile-menu-header">
+            <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="text-primary">Print</span><span className="text-red">&</span><span className="text-yellow">Copy</span>
+            </Link>
+            <button className="close-menu-btn" onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={28} />
+            </button>
+          </div>
+          
+          <div className="mobile-nav">
+            <div className="mobile-nav-group">
+              <h4 className="mobile-nav-title">Shop By Industry</h4>
+              <div className="mobile-subnav">
+                {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
+                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mobile-nav-group">
+              <h4 className="mobile-nav-title">Shop By Occasion</h4>
+              <div className="mobile-subnav">
+                {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
+                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mobile-nav-group single-links">
+              <Link to="/about" className="mobile-nav-title" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
+              <Link to="/contact" className="mobile-nav-title" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };

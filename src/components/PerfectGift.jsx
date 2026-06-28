@@ -4,13 +4,13 @@ import { useInView } from 'react-intersection-observer';
 import './PerfectGift.css';
 
 const gifts = [
-  { name: 'Mugs', img: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Tshirts', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Wooden Engraving', img: 'https://images.unsplash.com/photo-1611078500742-057d383980bc?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Stone Art', img: 'https://images.unsplash.com/photo-1600171258673-982d61d567ea?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Fridge Magnets', img: 'https://images.unsplash.com/photo-1596468202575-cb62f01d4a04?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Photoframe Single Page', img: 'https://images.unsplash.com/photo-1582561424760-0321d6cbc2ab?q=80&w=600&auto=format&fit=crop' },
-  { name: 'LED Photoframe', img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=600&auto=format&fit=crop' }
+  { name: 'Mugs', img: `${import.meta.env.BASE_URL}images/Gifting/Mugs.jpg` },
+  { name: 'Tshirts', img: `${import.meta.env.BASE_URL}images/Gifting/t-shirts.jpg` },
+  { name: 'Wooden Engraving', img: `${import.meta.env.BASE_URL}images/Gifting/wooden.jpg` },
+  { name: 'Stone Art', img: `${import.meta.env.BASE_URL}images/Gifting/Stone.jpg` },
+  { name: 'Fridge Magnets', img: `${import.meta.env.BASE_URL}images/Gifting/Fridge magnet.jpg` },
+  { name: 'Photoframe Single Page', img: `${import.meta.env.BASE_URL}images/Gifting/Photoframes.png` },
+  { name: 'LED Photoframe', img: `${import.meta.env.BASE_URL}images/Gifting/22.jpg` }
 ];
 
 const PerfectGift = () => {

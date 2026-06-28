@@ -56,11 +56,11 @@ const Footer = () => {
           <ul className="footer-contact">
             <li>
               <div className="contact-icon-wrap"><MapPin size={18} /></div>
-              <span>123 Print Street, Design City, PC 10001</span>
+              <span>Shop No. 43 A2,<br />South Block, Bahu Plaza Park<br />Jammu - 180012</span>
             </li>
             <li>
               <div className="contact-icon-wrap"><Phone size={18} /></div>
-              <span>(555) 123-4567</span>
+              <span>+91-9797470270<br />+91-9419189999</span>
             </li>
             <li>
               <div className="contact-icon-wrap"><Mail size={18} /></div>

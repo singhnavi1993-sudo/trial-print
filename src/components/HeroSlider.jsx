@@ -4,10 +4,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HeroSlider.css';
 
 const slides = [
-  { id: 1, image: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1920&auto=format&fit=crop', title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
-  { id: 2, image: 'https://images.unsplash.com/photo-1594957685954-2b0e77d24ab9?q=80&w=1920&auto=format&fit=crop', title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
-  { id: 3, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1920&auto=format&fit=crop', title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' },
-  { id: 4, image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1920&auto=format&fit=crop', title: 'Custom Marketing Materials', subtitle: 'Brochures, flyers, and more.', buttonText: 'Explore Options' }
+  { id: 1, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 1.jpg`, title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
+  { id: 2, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 2.jpg`, title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
+  { id: 3, image: `${import.meta.env.BASE_URL}images/Banner/banner 3.jpg`, title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' }
 ];
 
 const SLIDE_DURATION = 5000;
@@ -39,47 +38,7 @@ const HeroSlider = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <div className="slide-bg" style={{ backgroundImage: `url(${slides[currentSlide].image})` }} />
-          <div className="slide-overlay">
-            <div className="container slide-content-wrapper">
-              <motion.div 
-                className="slide-content"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
-                  }
-                }}
-              >
-                <motion.h1 
-                  className="slide-title"
-                  variants={{
-                    hidden: { opacity: 0, y: 50 },
-                    visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 20, stiffness: 100 } }
-                  }}
-                >{slides[currentSlide].title}</motion.h1>
-                <motion.p 
-                  className="slide-subtitle"
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 20, stiffness: 100 } }
-                  }}
-                >{slides[currentSlide].subtitle}</motion.p>
-                <motion.button 
-                  className="btn btn-red mt-4"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 20, stiffness: 100 } }
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >{slides[currentSlide].buttonText}</motion.button>
-              </motion.div>
-            </div>
-          </div>
+          <div className="slide-bg" style={{ backgroundImage: `url("${slides[currentSlide].image}")` }} />
         </motion.div>
       </AnimatePresence>
 

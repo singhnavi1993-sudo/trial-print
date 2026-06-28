@@ -16,7 +16,7 @@ const RoomDecor = () => {
     <section className="aesthetic-section" ref={ref}>
       <div className="aesthetic-bg">
         <motion.img 
-          src="https://images.unsplash.com/photo-1618220179428-22790b46a0eb?q=80&w=1600&auto=format&fit=crop" 
+          src={`${import.meta.env.BASE_URL}images/Room/1.jpg`} 
           alt="Room Decor"
           style={{ y }}
         />

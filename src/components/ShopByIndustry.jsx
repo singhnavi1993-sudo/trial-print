@@ -4,13 +4,13 @@ import { useInView } from 'react-intersection-observer';
 import './ShopByIndustry.css';
 
 const industries = [
-  { name: 'Branding & Advertising', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Business & Corporate', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Education', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Events', image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Healthcare', image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Hotels & Restaurants', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop' },
-  { name: 'Home Decor & Design', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop' }
+  { name: 'Branding & Advertising', image: `${import.meta.env.BASE_URL}images/Shop by industry/Advertising Industry.jpg` },
+  { name: 'Business & Corporate', image: `${import.meta.env.BASE_URL}images/Shop by industry/Corporate Industry.jpg` },
+  { name: 'Education', image: `${import.meta.env.BASE_URL}images/Shop by industry/Education Industry.jpg` },
+  { name: 'Events', image: `${import.meta.env.BASE_URL}images/Shop by industry/Event Industry.jpg` },
+  { name: 'Healthcare', image: `${import.meta.env.BASE_URL}images/Shop by industry/Health Care Industry.jpg` },
+  { name: 'Hotels & Restaurants', image: `${import.meta.env.BASE_URL}images/Shop by industry/Hotel Industry.jpg` },
+  { name: 'Home Decor & Design', image: `${import.meta.env.BASE_URL}images/Shop by industry/Home decor .jpg` }
 ];
 
 const ShopByIndustry = () => {
@@ -71,7 +71,7 @@ const ShopByIndustry = () => {
                 borderColor: 'var(--color-red)'
               }}
             >
-              <div className="industry-image" style={{ backgroundImage: `url(${industry.image})` }}></div>
+              <div className="industry-image" style={{ backgroundImage: `url("${industry.image}")` }}></div>
               <div className="industry-overlay"></div>
               <h3 className="industry-name">{industry.name}</h3>
             </motion.div>

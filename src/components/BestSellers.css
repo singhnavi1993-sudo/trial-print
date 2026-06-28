@@ -94,7 +94,7 @@
 .product-category {
   font-size: 0.85rem;
   text-transform: uppercase;
-  color: var(--color-gray-200);
+  color: #999999;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
   display: block;
@@ -103,7 +103,7 @@
 .product-name {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--color-white);
+  color: #000000;
   transition: color 0.3s ease;
 }
 

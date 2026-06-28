@@ -35,9 +35,8 @@ const CustomIdeas = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <div className="ideas-img-container">
-              {/* Replace with actual image later */}
               <img 
-                src="https://images.unsplash.com/photo-1529336953128-a85760f58cb5?q=80&w=1000&auto=format&fit=crop" 
+                src={`${import.meta.env.BASE_URL}images/customisation/26.jpg`} 
                 alt="Custom Printing Ideas" 
               />
               <div className="ideas-glow"></div>

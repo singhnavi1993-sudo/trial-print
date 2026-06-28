@@ -65,5 +65,17 @@
 @media (max-width: 992px) {
   .custom-ideas-wrapper {
     flex-direction: column;
+    text-align: center;
+  }
+  
+  .custom-ideas-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ideas-desc {
+    text-align: justify;
+    text-align-last: center; /* ensures the last line is centered while text is justified */
   }
 }

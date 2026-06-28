@@ -14,36 +14,6 @@ const DropdownNav = () => {
       name: 'Shop by Occasion', 
       link: '/occasion',
       subItems: ['Award Night', 'Celebrations', 'Corporate Events', 'Weddings']
-    },
-    { 
-      name: 'LED Boards', 
-      link: '/led-boards',
-      subItems: ['Acrylic Letterboards', 'Steel Letterboards', 'Router-Cut Boards', 'Glow Sign Boards', 'Backlit Logos', 'NEON Boards', 'Lollipop Signages']
-    },
-    { 
-      name: 'Awards & Mementoes', 
-      link: '/awards',
-      subItems: ['Certificates', 'Trophies', 'Medals', 'Economy Mementoes', 'Wooden Mementoes', 'Acrylic Mementoes', 'Glass Mementoes', 'Corporate Mementoes', 'Premium Mementoes', 'Retirement Mementoes', 'Customized Mementoes', 'Executive Mementoes']
-    },
-    { 
-      name: 'Gifting', 
-      link: '/gifting',
-      subItems: ['Mugs', 'Tshirts', 'Wooden Engraving', 'Stone', 'Fridge Magnets', 'Photoframe', 'LED Photofraame']
-    },
-    { 
-      name: 'Our B2B Services', 
-      link: '/b2b-services',
-      subItems: ['Digital Printing', 'Offset Printing', 'UV Printing', 'Sublimation Printing', 'Laser Cutting', 'Laser Engraving', 'Flex Printing', 'Vinyl Printing', 'Photoframing', 'Lamination & Binding', 'Installation & Recci', 'Graphics Designing', 'Photocopy & Scanning']
-    },
-    {
-      name: 'About Us',
-      link: '/about',
-      subItems: ['About the Brand', 'Founded', 'Tagline', 'Our Team', 'MD Message', 'Social Media', 'Contact Us', 'Address']
-    },
-    {
-      name: 'Blogs',
-      link: '/blogs',
-      subItems: []
     }
   ];
 

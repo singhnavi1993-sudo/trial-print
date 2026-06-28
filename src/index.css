@@ -147,3 +147,25 @@ img {
 .perspective-1000 {
   perspective: 1000px;
 }
+
+/* --- Global Responsive Rules --- */
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+  .section-padding { padding: 2rem 0; }
+  
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.8rem !important; }
+  h3 { font-size: 1.4rem !important; }
+  h4 { font-size: 1.2rem !important; }
+  
+  .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 0.8rem; }
+  .section-padding { padding: 1.5rem 0; }
+  
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.2rem !important; }
+}

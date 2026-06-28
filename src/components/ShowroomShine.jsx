@@ -16,7 +16,7 @@ const ShowroomShine = () => {
     <section className="aesthetic-section" ref={ref}>
       <div className="aesthetic-bg">
         <motion.img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop" 
+          src={`${import.meta.env.BASE_URL}images/Showroom/roll-up-standee-cover-page-template-business-promotion_1017-59811.jpg`} 
           alt="Showroom Shine"
           style={{ y }}
         />
