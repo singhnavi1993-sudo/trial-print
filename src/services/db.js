@@ -35,15 +35,19 @@ const initialCategories = [
 ];
 
 const initialProducts = [
-  { id: '1', title: 'Premium Business Cards', category: 'Business & Corporate', price: '₹499', image: 'https://images.unsplash.com/photo-1589330694653-06180a06ab78?auto=format&fit=crop&q=80&w=800', isBestSeller: true, order: 1 },
-  { id: '2', title: 'Corporate Letterheads', category: 'Business & Corporate', price: '₹899', image: 'https://images.unsplash.com/photo-1620645607310-9c169622d1cc?auto=format&fit=crop&q=80&w=800', isBestSeller: false, order: 2 },
-  { id: '3', title: 'Large Format Banners', category: 'Branding & Advertising', price: '₹1499', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800', isBestSeller: true, order: 3 },
+  { id: '1', title: 'Acrylic Led Board', category: 'LED BOARDS', price: '₹499', image: 'https://images.unsplash.com/photo-1589330694653-06180a06ab78?auto=format&fit=crop&q=80&w=800', isBestSeller: true, order: 1 },
+  { id: '2', title: 'Corporate Trophy', category: 'AWARDS & MEMENTOES', price: '₹899', image: 'https://images.unsplash.com/photo-1620645607310-9c169622d1cc?auto=format&fit=crop&q=80&w=800', isBestSeller: false, order: 2 },
+  { id: '3', title: 'Business Gift Set', category: 'GIFTING', price: '₹1499', image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800', isBestSeller: true, order: 3 },
 ];
 
 export const initDB = () => {
-  if (!localStorage.getItem(CATEGORIES_KEY)) {
+  const existingCats = localStorage.getItem(CATEGORIES_KEY);
+  // Auto-migrate if they still have the old dummy categories
+  if (!existingCats || existingCats.includes('Branding & Advertising')) {
     localStorage.setItem(CATEGORIES_KEY, JSON.stringify(initialCategories));
+    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(initialProducts)); // Wipe products too to match new categories
   }
+  
   if (!localStorage.getItem(PRODUCTS_KEY)) {
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(initialProducts));
   }
