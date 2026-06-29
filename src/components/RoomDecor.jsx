@@ -32,6 +32,18 @@ const roomCategories = [
     title: 'Cozy Blankets',
     items: '12 items',
     image: `${import.meta.env.BASE_URL}images/Room/Gulmohar Backlit Acrylic Wood Vinyl.jpeg`,
+  },
+  {
+    id: 6,
+    title: 'Acrylic Glow',
+    items: '15 items',
+    image: `${import.meta.env.BASE_URL}images/Room/Sharma Backlit Acrylic.png`,
+  },
+  {
+    id: 7,
+    title: 'Vibrant Art',
+    items: '6 items',
+    image: `${import.meta.env.BASE_URL}images/Room/WhatsApp Image 2024-01-02 at 9.33.12 AM.jpeg`,
   }
 ];
 
