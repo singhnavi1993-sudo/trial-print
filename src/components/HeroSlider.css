@@ -19,6 +19,7 @@
 .slide {
   position: absolute;
   top: 0;
+  width: 80%;
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
