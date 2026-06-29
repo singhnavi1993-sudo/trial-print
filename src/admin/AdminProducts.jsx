@@ -12,7 +12,7 @@ const AdminProducts = () => {
   
   const [formData, setFormData] = useState({
     title: '',
-    category: '',
+    categories: [],
     price: '',
     image: '',
     isBestSeller: false,
@@ -31,12 +31,20 @@ const AdminProducts = () => {
   const handleOpenModal = (product = null) => {
     if (product) {
       setEditingProduct(product);
-      setFormData(product);
+      // Migrate old string 'category' to array 'categories' on edit
+      const productCategories = product.categories 
+        ? product.categories 
+        : (product.category ? [product.category] : []);
+        
+      setFormData({
+        ...product,
+        categories: productCategories
+      });
     } else {
       setEditingProduct(null);
       setFormData({
         title: '',
-        category: categories.length > 0 ? categories[0].name : '',
+        categories: [],
         price: '',
         image: '',
         isBestSeller: false,
@@ -59,6 +67,17 @@ const AdminProducts = () => {
     });
   };
 
+  const handleCategoryToggle = (catName) => {
+    setFormData(prev => {
+      const isSelected = prev.categories.includes(catName);
+      if (isSelected) {
+        return { ...prev, categories: prev.categories.filter(c => c !== catName) };
+      } else {
+        return { ...prev, categories: [...prev.categories, catName] };
+      }
+    });
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -76,10 +95,17 @@ const AdminProducts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.categories.length === 0) {
+      alert('Please select at least one category.');
+      return;
+    }
+    // Remove the old 'category' string to prevent confusion in DB
+    const { category, ...dataToSave } = formData;
+    
     if (editingProduct) {
-      updateProduct({ ...formData, id: editingProduct.id });
+      updateProduct({ ...dataToSave, id: editingProduct.id });
     } else {
-      addProduct(formData);
+      addProduct(dataToSave);
     }
     loadData();
     handleCloseModal();
@@ -90,6 +116,13 @@ const AdminProducts = () => {
       deleteProduct(id);
       loadData();
     }
+  };
+
+  const renderCategories = (product) => {
+    if (product.categories && product.categories.length > 0) {
+      return product.categories.join(', ');
+    }
+    return product.category || 'None';
   };
 
   return (
@@ -107,7 +140,7 @@ const AdminProducts = () => {
             <tr>
               <th>Image</th>
               <th>Product Name</th>
-              <th>Category</th>
+              <th>Categories</th>
               <th>Price</th>
               <th>Priority / Order</th>
               <th>Best Seller</th>
@@ -121,7 +154,7 @@ const AdminProducts = () => {
                   <img src={product.image} alt={product.title} className="admin-table-img" />
                 </td>
                 <td className="font-medium">{product.title}</td>
-                <td>{product.category}</td>
+                <td>{renderCategories(product)}</td>
                 <td>{product.price}</td>
                 <td>{product.order}</td>
                 <td>
@@ -168,17 +201,23 @@ const AdminProducts = () => {
               </div>
 
               <div className="form-row">
-                <div className="form-group">
-                  <label>Category</label>
-                  <select name="category" value={formData.category} onChange={handleInputChange} required>
-                    <option value="" disabled>Select a category</option>
+                <div className="form-group" style={{ flex: '1.5' }}>
+                  <label>Categories (Select one or more)</label>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.5rem', background: '#f9fafb', padding: '1rem', borderRadius: '6px', border: '1px solid #e5e7eb' }}>
                     {categories.map(c => (
-                      <option key={c.id} value={c.name}>{c.name}</option>
+                      <label key={c.id} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontSize: '0.9rem', marginRight: '0.5rem' }}>
+                        <input 
+                          type="checkbox" 
+                          checked={formData.categories?.includes(c.name) || false}
+                          onChange={() => handleCategoryToggle(c.name)}
+                        />
+                        {c.name}
+                      </label>
                     ))}
-                  </select>
+                  </div>
                 </div>
                 
-                <div className="form-group">
+                <div className="form-group" style={{ flex: '1' }}>
                   <label>Price (e.g. ₹499)</label>
                   <input type="text" name="price" value={formData.price} onChange={handleInputChange} required />
                 </div>

@@ -106,12 +106,10 @@ const AdminDashboard = () => {
   };
 
   // Group products by category
-  const categoriesWithProducts = categories.map(cat => {
-    return {
-      ...cat,
-      products: products.filter(p => p.category === cat.name)
-    };
-  });
+  const categoriesWithProducts = categories.map(cat => ({
+    ...cat,
+    products: products.filter(p => p.categories?.includes(cat.name) || p.category === cat.name)
+  }));
 
   // Sort categories by order
   categoriesWithProducts.sort((a, b) => a.order - b.order);
