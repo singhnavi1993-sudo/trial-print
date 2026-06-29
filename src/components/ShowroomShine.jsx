@@ -59,7 +59,6 @@ const ShowroomShine = () => {
               <div className="room-decor-info">
                 <div className="room-decor-text">
                   <h3>{category.title}</h3>
-                  <span>{category.items}</span>
                 </div>
                 <button className="room-decor-btn" aria-label="Explore Category">
                   <ArrowUpRight size={18} />

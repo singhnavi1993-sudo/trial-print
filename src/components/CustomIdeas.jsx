@@ -129,7 +129,6 @@ const CustomIdeas = () => {
                 <div className="card-footer">
                   <div className="card-info">
                     <h3>{product.title}</h3>
-                    <span>{product.items}</span>
                   </div>
                   <button className="card-action-btn" aria-label="View Product">
                     <ArrowUpRight size={18} />
