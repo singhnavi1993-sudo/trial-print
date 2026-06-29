@@ -13,7 +13,7 @@
   font-size: 2.5rem;
   font-family: var(--font-primary);
   font-weight: 700;
-  color: #1a1a1a;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
@@ -90,7 +90,7 @@
 .room-decor-text h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #000000;
   margin-bottom: 0.25rem;
 }
 
