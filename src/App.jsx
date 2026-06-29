@@ -28,7 +28,6 @@ const MainLayout = ({ showIntro, setShowIntro }) => {
       <AnimatePresence>
         {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       </AnimatePresence>
-      <CinematicBackground />
       <ScrollObserver />
       <div className="app-container" style={{ position: 'relative', zIndex: 1, backgroundColor: 'transparent' }}>
         <Navbar />
