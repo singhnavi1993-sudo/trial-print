@@ -60,7 +60,7 @@ const FloatingShapes = () => {
 
 const CinematicBackground = () => {
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#000000' }}>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, background: '#ffffff' }}>
       <Canvas camera={{ position: [0, 0, 15], fov: 45 }} dpr={[1, 2]}>
         <ambientLight intensity={0.1} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#ffffff" />
@@ -69,7 +69,7 @@ const CinematicBackground = () => {
         
         <FloatingShapes />
         
-        <Sparkles count={300} scale={25} size={1.5} speed={0.4} opacity={0.2} color="#ffffff" />
+        <Sparkles count={300} scale={25} size={1.5} speed={0.4} opacity={0.2} color="#000000" />
       </Canvas>
     </div>
   );
