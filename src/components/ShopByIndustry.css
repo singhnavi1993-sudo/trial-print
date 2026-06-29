@@ -41,12 +41,15 @@
   .industry-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    width: 100%;
   }
   
   .industry-card {
     height: 180px;
     padding: 1rem;
     min-width: 0;
+    width: 100%;
+    margin: 0 auto;
   }
   
   .industry-name {

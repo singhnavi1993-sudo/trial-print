@@ -48,6 +48,7 @@
   .products-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    width: 100%;
   }
   
   .product-image-container {
@@ -60,6 +61,8 @@
   
   .product-card {
     text-align: center;
+    width: 100%;
+    margin: 0 auto;
   }
   
   .product-card:hover {
