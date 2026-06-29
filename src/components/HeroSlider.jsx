@@ -4,9 +4,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HeroSlider.css';
 
 const slides = [
-  { id: 1, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 1.jpg`, title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
-  { id: 2, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 2.jpg`, title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
-  { id: 3, image: `${import.meta.env.BASE_URL}images/Banner/banner 3.jpg`, title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' }
+  { id: 1, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 1.jpg`, bgPosition: 'center', title: 'Premium Commercial Printing', subtitle: 'Vibrant colors, sharp details.', buttonText: 'Shop & Save Now' },
+  { id: 2, image: `${import.meta.env.BASE_URL}images/Banner/banner ad 2.jpg`, bgPosition: 'right center', title: 'Fast & Reliable Copying', subtitle: 'High volume, quick turnaround.', buttonText: 'Get Started' },
+  { id: 3, image: `${import.meta.env.BASE_URL}images/Banner/banner 3.jpg`, bgPosition: 'center', title: 'Creative Graphic Design', subtitle: 'We bring your ideas to life.', buttonText: 'View Portfolio' }
 ];
 
 const SLIDE_DURATION = 5000;
@@ -46,7 +46,13 @@ const HeroSlider = () => {
               }}
               onClick={() => { if (d !== 0) setCurrentSlide(i); }}
             >
-              <div className="slide-bg" style={{ backgroundImage: `url("${slide.image}")` }} />
+              <div 
+                className="slide-bg" 
+                style={{ 
+                  backgroundImage: `url("${slide.image}")`,
+                  backgroundPosition: slide.bgPosition || 'center'
+                }} 
+              />
               {/* Optional overlay/content if needed */}
             </div>
           );
