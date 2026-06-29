@@ -12,7 +12,7 @@
 .slides-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 9; /* Scales perfectly with width to prevent cropping */
+  aspect-ratio: 16 / 6; /* Middle-ground aspect ratio */
   min-height: 250px;
   max-height: 800px;
 }
@@ -29,7 +29,7 @@
   opacity: 0.5;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  background-color: #f4f4f5; /* Light fallback background */
+  background-color: #f4f4f5;
 }
 
 .slide-bg {
@@ -38,7 +38,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain; /* Prevents image from being cut off */
+  background-size: 100% 100%; /* Stretches exactly to the edges */
   background-position: center;
   background-repeat: no-repeat;
 }
