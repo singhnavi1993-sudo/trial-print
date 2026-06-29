@@ -86,6 +86,11 @@
   user-select: none;
 }
 
+.cards-slider.is-dragging {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
 .cards-slider::-webkit-scrollbar {
   display: none;
 }

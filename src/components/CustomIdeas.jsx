@@ -110,7 +110,7 @@ const CustomIdeas = () => {
         {/* Right Side Slider */}
         <div className="custom-ideas-right">
           <motion.div 
-            className="cards-slider"
+            className={`cards-slider ${isDown ? 'is-dragging' : ''}`}
             ref={sliderRef}
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
