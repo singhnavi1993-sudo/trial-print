@@ -14,18 +14,12 @@ const SLIDE_DURATION = 5000;
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  }, []);
-
   useEffect(() => {
-    const timer = setInterval(nextSlide, SLIDE_DURATION);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, SLIDE_DURATION);
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, [currentSlide]);
 
   const getRelativeIndex = (i, current, length) => {
     let d = i - current;
@@ -59,29 +53,22 @@ const HeroSlider = () => {
         })}
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="slider-nav">
-        <button className="nav-arrow left" onClick={prevSlide} aria-label="Previous Slide">
-          <ChevronLeft size={32} />
-        </button>
-        <button className="nav-arrow right" onClick={nextSlide} aria-label="Next Slide">
-          <ChevronRight size={32} />
-        </button>
-      </div>
-
-      {/* Pagination Line */}
-      <div className="slider-pagination">
-        <span className="page-num">{currentSlide + 1}</span>
-        <div className="page-lines">
-          {slides.map((_, i) => (
-            <div 
-              key={i} 
-              className={`page-line ${i === currentSlide ? 'active' : ''}`} 
-              onClick={() => setCurrentSlide(i)}
-            />
-          ))}
-        </div>
-        <span className="page-num">{slides.length}</span>
+      {/* Progress Dots Pagination */}
+      <div className="slider-dots">
+        {slides.map((_, i) => (
+          <div 
+            key={i} 
+            className={`dot ${i === currentSlide ? 'active' : ''}`} 
+            onClick={() => setCurrentSlide(i)}
+          >
+            {i === currentSlide && (
+              <div 
+                className="dot-fill" 
+                style={{ animationDuration: `${SLIDE_DURATION}ms` }} 
+              />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
