@@ -1,40 +1,75 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import './AestheticSections.css';
+import { ArrowUpRight } from 'lucide-react';
+import './RoomDecor.css';
+
+const roomCategories = [
+  {
+    id: 1,
+    title: 'Summer Layering',
+    items: '8 items',
+    image: `${import.meta.env.BASE_URL}images/Room/1.jpg`,
+  },
+  {
+    id: 2,
+    title: 'New season essential',
+    items: '8 items',
+    image: `${import.meta.env.BASE_URL}images/Room/2.jpg`,
+  },
+  {
+    id: 3,
+    title: 'Jackets & Coats',
+    items: '5 items',
+    image: `${import.meta.env.BASE_URL}images/Room/22 (1).jpg`,
+  },
+  {
+    id: 4,
+    title: 'Up to 20% off',
+    items: '9 items',
+    image: `${import.meta.env.BASE_URL}images/Room/Acrylic 2.jpeg`,
+  },
+  {
+    id: 5,
+    title: 'Cozy Blankets',
+    items: '12 items',
+    image: `${import.meta.env.BASE_URL}images/Room/Gulmohar Backlit Acrylic Wood Vinyl.jpeg`,
+  }
+];
+
+// Duplicate for continuous seamless scrolling
+const marqueeItems = [...roomCategories, ...roomCategories];
 
 const RoomDecor = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-
   return (
-    <section className="aesthetic-section" ref={ref}>
-      <div className="aesthetic-bg">
-        <motion.img 
-          src={`${import.meta.env.BASE_URL}images/Room/1.jpg`} 
-          alt="Room Decor"
-          style={{ y }}
-        />
-        <div className="aesthetic-overlay"></div>
+    <section className="room-decor-section">
+      
+      <div className="container">
+        <div className="room-decor-header">
+          <h2>Ready to beautify your Room?</h2>
+          <p>Custom wall art, canvas prints, and personalized decor.</p>
+        </div>
       </div>
-      <div className="container aesthetic-content">
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <h2 className="aesthetic-title">Ready to beautify your Room?</h2>
-          <p className="aesthetic-subtitle">Custom wall art, canvas prints, and personalized decor.</p>
-          <button className="btn btn-yellow mt-4">Explore Decor</button>
-        </motion.div>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-content">
+          {marqueeItems.map((category, index) => (
+            <div className="room-decor-card" key={`${category.id}-${index}`}>
+              <div className="room-decor-img-wrapper">
+                <img src={category.image} alt={category.title} />
+              </div>
+              <div className="room-decor-info">
+                <div className="room-decor-text">
+                  <h3>{category.title}</h3>
+                  <span>{category.items}</span>
+                </div>
+                <button className="room-decor-btn" aria-label="Explore Category">
+                  <ArrowUpRight size={18} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
     </section>
   );
 };
