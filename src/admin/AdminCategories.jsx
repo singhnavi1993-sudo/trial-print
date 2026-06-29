@@ -18,8 +18,9 @@ const AdminCategories = () => {
     loadData();
   }, []);
 
-  const loadData = () => {
-    setCategories(getCategories());
+  const loadData = async () => {
+    const cats = await getCategories();
+    setCategories(cats);
   };
 
   const handleOpenModal = (category = null) => {
@@ -56,21 +57,21 @@ const AdminCategories = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingCategory) {
-      updateCategory({ ...formData, id: editingCategory.id });
+      await updateCategory({ ...formData, id: editingCategory.id });
     } else {
-      addCategory(formData);
+      await addCategory(formData);
     }
-    loadData();
+    await loadData();
     handleCloseModal();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this category?')) {
-      deleteCategory(id);
-      loadData();
+      await deleteCategory(id);
+      await loadData();
     }
   };
 

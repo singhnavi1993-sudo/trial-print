@@ -21,10 +21,10 @@ const AdminDashboard = () => {
     order: 1
   });
 
-  const loadData = () => {
-    const loadedCategories = getCategories();
-    const loadedProducts = getProducts();
-    const loadedBlogs = getBlogs();
+  const loadData = async () => {
+    const loadedCategories = await getCategories();
+    const loadedProducts = await getProducts();
+    const loadedBlogs = await getBlogs();
 
     setStats({
       products: loadedProducts.length,
@@ -86,21 +86,21 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingProduct) {
-      updateProduct({ ...formData, id: editingProduct.id });
+      await updateProduct({ ...formData, id: editingProduct.id });
     } else {
-      addProduct(formData);
+      await addProduct(formData);
     }
-    loadData();
+    await loadData();
     handleCloseModal();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
-      deleteProduct(id);
-      loadData();
+      await deleteProduct(id);
+      await loadData();
       handleCloseModal(); // close modal if they delete from inside an edit
     }
   };

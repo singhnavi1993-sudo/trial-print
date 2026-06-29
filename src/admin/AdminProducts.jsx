@@ -23,9 +23,11 @@ const AdminProducts = () => {
     loadData();
   }, []);
 
-  const loadData = () => {
-    setProducts(getProducts());
-    setCategories(getCategories());
+  const loadData = async () => {
+    const prods = await getProducts();
+    const cats = await getCategories();
+    setProducts(prods);
+    setCategories(cats);
   };
 
   const handleOpenModal = (product = null) => {
@@ -93,7 +95,7 @@ const AdminProducts = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.categories.length === 0) {
       alert('Please select at least one category.');
@@ -103,18 +105,18 @@ const AdminProducts = () => {
     const { category, ...dataToSave } = formData;
     
     if (editingProduct) {
-      updateProduct({ ...dataToSave, id: editingProduct.id });
+      await updateProduct({ ...dataToSave, id: editingProduct.id });
     } else {
-      addProduct(dataToSave);
+      await addProduct(dataToSave);
     }
-    loadData();
+    await loadData();
     handleCloseModal();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
-      deleteProduct(id);
-      loadData();
+      await deleteProduct(id);
+      await loadData();
     }
   };
 

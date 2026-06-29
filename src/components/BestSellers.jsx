@@ -7,13 +7,16 @@ const BestSellers = () => {
   const [bestSellers, setBestSellers] = useState([]);
 
   useEffect(() => {
-    // Fetch products, filter by best seller, and sort by priority order
-    const allProducts = getProducts();
-    const filtered = allProducts
-      .filter(p => p.isBestSeller)
-      .sort((a, b) => a.order - b.order);
-    
-    setBestSellers(filtered);
+    const fetchProducts = async () => {
+      // Fetch products, filter by best seller, and sort by priority order
+      const allProducts = await getProducts();
+      const filtered = allProducts
+        .filter(p => p.isBestSeller)
+        .sort((a, b) => a.order - b.order);
+      
+      setBestSellers(filtered);
+    };
+    fetchProducts();
   }, []);
 
   return (
@@ -59,7 +62,7 @@ const BestSellers = () => {
                   <img src={product.image} alt={`${product.title} alternate view`} className="product-image hover" />
                 </div>
                 <div className="product-info text-center">
-                  <span className="product-category">{product.category}</span>
+                  <span className="product-category">{product.categories?.length > 0 ? product.categories.join(', ') : product.category}</span>
                   <h3 className="product-name">{product.title}</h3>
                 </div>
               </motion.div>

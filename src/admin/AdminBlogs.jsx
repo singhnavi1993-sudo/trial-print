@@ -21,8 +21,9 @@ const AdminBlogs = () => {
     loadData();
   }, []);
 
-  const loadData = () => {
-    setBlogs(getBlogs());
+  const loadData = async () => {
+    const fetchedBlogs = await getBlogs();
+    setBlogs(fetchedBlogs);
   };
 
   const handleOpenModal = (blog = null) => {
@@ -70,21 +71,21 @@ const AdminBlogs = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingBlog) {
-      updateBlog({ ...formData, id: editingBlog.id });
+      await updateBlog({ ...formData, id: editingBlog.id });
     } else {
-      addBlog(formData);
+      await addBlog(formData);
     }
-    loadData();
+    await loadData();
     handleCloseModal();
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this blog post?')) {
-      deleteBlog(id);
-      loadData();
+      await deleteBlog(id);
+      await loadData();
     }
   };
 
