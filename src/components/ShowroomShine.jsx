@@ -43,9 +43,9 @@ const ShowroomShine = () => {
     <section className="room-decor-section">
       
       <div className="container">
-        <div className="room-decor-header">
+        <div className="center-header">
           <h2>Let your showroom shine</h2>
-          <p>Elevate your business with professional displays and marketing materials.</p>
+          <p className="subtitle">Elevate your business with professional displays and marketing materials.</p>
         </div>
       </div>
 

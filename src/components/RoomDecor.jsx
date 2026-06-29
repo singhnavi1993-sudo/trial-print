@@ -55,9 +55,9 @@ const RoomDecor = () => {
     <section className="room-decor-section">
       
       <div className="container">
-        <div className="room-decor-header">
+        <div className="center-header">
           <h2>Ready to beautify your Room?</h2>
-          <p>Custom wall art, canvas prints, and personalized decor.</p>
+          <p className="subtitle">Custom wall art, canvas prints, and personalized decor.</p>
         </div>
       </div>
 
