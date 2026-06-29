@@ -43,7 +43,7 @@ const MainLayout = ({ showIntro, setShowIntro }) => {
 };
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
 
   return (
     <Router>

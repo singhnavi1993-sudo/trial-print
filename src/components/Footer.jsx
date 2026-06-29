@@ -17,9 +17,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div className="footer-col brand-col">
           <Link to="/" className="logo footer-logo">
-            <span className="logo-text-1">Print</span>
-            <span className="text-red">&</span>
-            <span className="text-yellow">Copy</span>
+            <img src={`${import.meta.env.BASE_URL}images/new_logo.png`} alt="Print & Copy" style={{ height: '40px' }} />
           </Link>
           <p className="footer-desc">
             Your premium destination for high-quality commercial printing and copying services. We bring your ideas to life with precision and vibrant colors.

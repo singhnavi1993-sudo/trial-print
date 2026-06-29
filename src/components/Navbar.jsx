@@ -78,9 +78,7 @@ const Navbar = () => {
             <Menu size={24} />
           </button>
           <Link to="/" className="logo" onClick={() => setIsSearchOpen(false)}>
-            <span className="text-primary">Print</span>
-            <span className="text-red">&</span>
-            <span className="text-yellow">Copy</span>
+            <img src={`${import.meta.env.BASE_URL}images/new_logo.png`} alt="Print & Copy" style={{ height: '50px' }} />
           </Link>
         </div>
         
@@ -184,7 +182,7 @@ const Navbar = () => {
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
             <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
-              <span className="text-primary">Print</span><span className="text-red">&</span><span className="text-yellow">Copy</span>
+              <img src={`${import.meta.env.BASE_URL}images/new_logo.png`} alt="Print & Copy" style={{ height: '40px' }} />
             </Link>
             <button className="close-menu-btn" onClick={() => setIsMobileMenuOpen(false)}>
               <X size={28} />
