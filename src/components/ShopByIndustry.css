@@ -73,10 +73,6 @@
   transform: scale(1.1);
 }
 
-.industry-card:hover .industry-overlay {
-  background: linear-gradient(to top, rgba(220, 38, 38, 0.9) 0%, rgba(0,0,0,0.4) 100%);
-}
-
 .industry-name {
   font-family: var(--font-primary);
   font-size: 1.4rem;
