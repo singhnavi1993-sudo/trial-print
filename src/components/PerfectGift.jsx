@@ -83,21 +83,21 @@ const PerfectGift = () => {
             <h2>Looking for a perfect Gift?</h2>
             <p className="subtitle">Personalized gifts for everyone</p>
           </motion.div>
-          
-          <div className="gift-slider-controls">
-            <button className="gift-control-btn" onClick={() => slide('left')} aria-label="Previous">
-              <ChevronLeft size={24} />
-            </button>
-            <button className="gift-control-btn" onClick={() => slide('right')} aria-label="Next">
-              <ChevronRight size={24} />
-            </button>
-          </div>
         </div>
 
-        <motion.div 
-          className={`gift-slider ${isDown ? 'is-dragging' : ''}`}
-          ref={sliderRef}
-          initial={{ opacity: 0, y: 30 }}
+        <div className="slider-wrapper">
+          <button className="gift-control-btn btn-left" onClick={() => slide('left')} aria-label="Previous">
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button className="gift-control-btn btn-right" onClick={() => slide('right')} aria-label="Next">
+            <ChevronRight size={24} />
+          </button>
+
+          <motion.div 
+            className={`gift-slider ${isDown ? 'is-dragging' : ''}`}
+            ref={sliderRef}
+            initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           onMouseDown={handleMouseDown}
@@ -123,6 +123,7 @@ const PerfectGift = () => {
             </motion.div>
           ))}
         </motion.div>
+        </div>
       </div>
     </section>
   );
