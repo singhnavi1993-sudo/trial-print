@@ -77,37 +77,43 @@
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
-  /* hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  padding-bottom: 1rem; 
-  /* Break out of container on the right */
-  margin-right: -50vw;
-  padding-right: 50vw;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  user-select: none;
 }
+
 .cards-slider::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .product-card {
-  flex: 0 0 320px;
-  background-color: #ffffff;
-  border-radius: 24px;
-  overflow: hidden;
+  flex: 0 0 calc(50% - 0.75rem);
+  min-width: 280px;
+  max-width: 340px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
 }
 
 .card-image {
-  height: 340px;
   width: 100%;
+  height: 380px;
+  border-radius: 20px;
   overflow: hidden;
+  margin-bottom: 1.25rem;
+  position: relative;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none; /* Prevent native image drag */
 }
 
 .product-card:hover .card-image img {

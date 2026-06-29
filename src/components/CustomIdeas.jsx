@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
@@ -38,6 +38,33 @@ const CustomIdeas = () => {
   });
 
   const sliderRef = useRef(null);
+  
+  // Drag to scroll state
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e) => {
+    setIsDown(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   const slide = (direction) => {
     if (sliderRef.current) {
@@ -88,6 +115,11 @@ const CustomIdeas = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            style={{ cursor: isDown ? 'grabbing' : 'grab' }}
           >
             {customProducts.map((product) => (
               <div className="product-card" key={product.id}>
