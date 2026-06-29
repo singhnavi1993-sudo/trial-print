@@ -59,8 +59,8 @@ const AdminBlogs = () => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 1024 * 1024 * 1.5) { // 1.5MB limit
-        alert('File is too large. Please upload an image smaller than 1.5MB to save local storage space.');
+      if (file.size > 1024 * 500) { // 500KB limit
+        alert('File is too large for the database. Please upload an image smaller than 500KB, or use an image URL instead.');
         return;
       }
       const reader = new FileReader();
@@ -73,19 +73,28 @@ const AdminBlogs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingBlog) {
-      await updateBlog({ ...formData, id: editingBlog.id });
-    } else {
-      await addBlog(formData);
+    try {
+      if (editingBlog) {
+        await updateBlog({ ...formData, id: editingBlog.id });
+      } else {
+        await addBlog(formData);
+      }
+      await loadData();
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error saving blog:", error);
+      alert("Failed to save blog. If you uploaded an image, it might be too large. Try using an image URL instead.");
     }
-    await loadData();
-    handleCloseModal();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this blog post?')) {
-      await deleteBlog(id);
-      await loadData();
+      try {
+        await deleteBlog(id);
+        await loadData();
+      } catch (error) {
+        alert("Failed to delete blog.");
+      }
     }
   };
 

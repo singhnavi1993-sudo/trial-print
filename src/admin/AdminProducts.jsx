@@ -83,8 +83,8 @@ const AdminProducts = () => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 1024 * 1024 * 1.5) { 
-        alert('File is too large. Please upload an image smaller than 1.5MB.');
+      if (file.size > 1024 * 500) { 
+        alert('File is too large for the database. Please upload an image smaller than 500KB, or use an image URL instead.');
         return;
       }
       const reader = new FileReader();
@@ -104,19 +104,28 @@ const AdminProducts = () => {
     // Remove the old 'category' string to prevent confusion in DB
     const { category, ...dataToSave } = formData;
     
-    if (editingProduct) {
-      await updateProduct({ ...dataToSave, id: editingProduct.id });
-    } else {
-      await addProduct(dataToSave);
+    try {
+      if (editingProduct) {
+        await updateProduct({ ...dataToSave, id: editingProduct.id });
+      } else {
+        await addProduct(dataToSave);
+      }
+      await loadData();
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error saving product:", error);
+      alert("Failed to save product. If you uploaded an image, it might be too large. Try using an image URL instead.");
     }
-    await loadData();
-    handleCloseModal();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
-      await deleteProduct(id);
-      await loadData();
+      try {
+        await deleteProduct(id);
+        await loadData();
+      } catch (error) {
+        alert("Failed to delete product.");
+      }
     }
   };
 
