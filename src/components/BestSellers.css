@@ -37,6 +37,31 @@
   margin-bottom: 3rem;
 }
 
+@media (max-width: 768px) {
+  .products-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .product-image-container {
+    margin-bottom: 0.75rem;
+  }
+  
+  .product-name {
+    font-size: 1.05rem;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(-2deg) scale(1.01);
+  }
+}
+
 .product-card {
   text-align: left;
   background-color: var(--bg-secondary);

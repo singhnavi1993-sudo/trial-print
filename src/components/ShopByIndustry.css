@@ -28,7 +28,29 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
-  perspective: 1000px; /* Cinematic 3D hover effect */
+  perspective: 1000px;
+}
+
+@media (max-width: 768px) {
+  .industry-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .industry-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .industry-card {
+    height: 180px;
+    padding: 1rem;
+  }
+  
+  .industry-name {
+    font-size: 1.1rem;
+  }
 }
 
 .industry-card {
