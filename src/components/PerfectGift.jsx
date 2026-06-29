@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './PerfectGift.css';
 
 const gifts = [
@@ -19,11 +20,43 @@ const PerfectGift = () => {
     threshold: 0.1,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
+  const sliderRef = useRef(null);
+  
+  // Drag to scroll state
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e) => {
+    setIsDown(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const slide = (direction) => {
+    if (sliderRef.current) {
+      const scrollAmount = 280; // card width + gap
+      if (direction === 'left') {
+        sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
     }
   };
 
@@ -39,28 +72,46 @@ const PerfectGift = () => {
   return (
     <section className="section-padding perfect-gift-section" ref={ref}>
       <div className="container">
-        <motion.div 
-          className="section-header center-header"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h2>Looking for a perfect Gift?</h2>
-          <p className="subtitle">Personalized gifts for everyone</p>
-        </motion.div>
+        
+        <div className="gift-header-container">
+          <motion.div 
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h2>Looking for a perfect Gift?</h2>
+            <p className="subtitle">Personalized gifts for everyone</p>
+          </motion.div>
+          
+          <div className="gift-slider-controls">
+            <button className="gift-control-btn" onClick={() => slide('left')} aria-label="Previous">
+              <ChevronLeft size={24} />
+            </button>
+            <button className="gift-control-btn" onClick={() => slide('right')} aria-label="Next">
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
 
         <motion.div 
-          className="gift-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          className={`gift-slider ${isDown ? 'is-dragging' : ''}`}
+          ref={sliderRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          style={{ cursor: isDown ? 'grabbing' : 'grab' }}
         >
           {gifts.map((gift, index) => (
             <motion.div 
               key={index} 
               className="gift-card"
               variants={itemVariants}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -5 }}
             >
               <div className="gift-img-wrapper">
                 <img src={gift.img} alt={gift.name} />

@@ -3,16 +3,68 @@
   z-index: 10;
 }
 
-.gift-grid {
+.gift-header-container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.gift-header-container .section-header {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.gift-slider-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.gift-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #d4cfc9;
+  background: transparent;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gift-control-btn:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.gift-slider {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1.5rem;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  user-select: none;
+}
+
+.gift-slider.is-dragging {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+.gift-slider::-webkit-scrollbar {
+  display: none;
 }
 
 .gift-card {
-  width: 250px;
-  cursor: pointer;
+  flex: 0 0 250px;
+  scroll-snap-align: start;
 }
 
 .gift-img-wrapper {
@@ -30,6 +82,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  pointer-events: none; /* Prevent native image drag */
 }
 
 .gift-overlay {
