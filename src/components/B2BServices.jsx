@@ -21,11 +21,10 @@ const B2BServices = () => {
           <div className="b2b-content">
             <h2 className="b2b-title">Are you a Printer or Advertising Agency?</h2>
             <p className="b2b-subtitle">Looking for B2B Services?</p>
-            <p className="b2b-desc">
-              We offer exclusive wholesale pricing, priority production queues, and white-label 
-              shipping for agencies and print brokers. Partner with us to scale your offerings.
+            <p className="b2b-description">
+              Get exclusive benefits, priority support, and bulk pricing for your enterprise printing and branding needs.
             </p>
-            <button className="btn btn-primary mt-4">Become a Partner</button>
+            <button className="btn btn-red mt-4">Become a Partner</button>
           </div>
         </motion.div>
       </div>

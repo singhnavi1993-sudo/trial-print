@@ -100,21 +100,18 @@
 }
 
 .room-decor-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: var(--color-red);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1a1a1a;
-  border: 1px solid #e5e5e5;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .room-decor-card:hover .room-decor-btn {
-  background-color: #1a1a1a;
+  background-color: #b91c1c; /* deeper red */
   color: #ffffff;
-  border-color: #1a1a1a;
 }

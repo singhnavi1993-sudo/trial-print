@@ -72,7 +72,7 @@ const BestSellers = () => {
         )}
         
         <div className="text-center mt-4">
-          <button className="btn btn-primary">View All Products</button>
+          <button className="btn btn-red">View All Products</button>
         </div>
       </div>
     </section>
