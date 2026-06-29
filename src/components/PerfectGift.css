@@ -5,13 +5,13 @@
 
 .gift-header-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2.5rem;
 }
 
 .gift-header-container .section-header {
-  text-align: left;
+  text-align: center;
   margin-bottom: 0;
 }
 
