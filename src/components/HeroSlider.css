@@ -4,23 +4,29 @@
   min-height: 400px;
   max-height: 600px;
   overflow: hidden;
-  background-color: var(--color-black);
-  border-radius: 20px;
   margin: 2rem auto;
-  width: calc(100% - 3rem);
-  max-width: 1552px; /* 1600px - 3rem padding */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 100vw;
+  /* removing background and border-radius from container so slides peek clearly */
+}
+
+.slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .slide {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  z-index: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  transform: scale(0.9);
+  opacity: 0.5;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .slide-bg {
@@ -29,14 +35,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .slide.active {
+  transform: scale(1);
   opacity: 1;
-  z-index: 2;
+  cursor: default;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .slide-overlay {

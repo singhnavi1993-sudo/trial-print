@@ -27,22 +27,39 @@ const HeroSlider = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
+  const getRelativeIndex = (i, current, length) => {
+    let d = i - current;
+    if (d > length / 2) d -= length;
+    if (d < -length / 2) d += length;
+    return d;
+  };
+
   return (
     <div className="hero-slider">
-      <AnimatePresence mode="wait">
-        <motion.div 
-          key={currentSlide} 
-          className="slide active"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="slide-bg" style={{ backgroundImage: `url("${slides[currentSlide].image}")` }} />
-        </motion.div>
-      </AnimatePresence>
+      <div className="slides-container">
+        {slides.map((slide, i) => {
+          const d = getRelativeIndex(i, currentSlide, slides.length);
+          // width = 80%, gap = 2%, step = 82%, center start = 10%
+          const leftPos = 10 + (d * 82);
+          
+          return (
+            <div 
+              key={slide.id} 
+              className={`slide ${d === 0 ? 'active' : ''}`}
+              style={{ 
+                left: `${leftPos}%`,
+                zIndex: d === 0 ? 10 : 5 - Math.abs(d)
+              }}
+              onClick={() => { if (d !== 0) setCurrentSlide(i); }}
+            >
+              <div className="slide-bg" style={{ backgroundImage: `url("${slide.image}")` }} />
+              {/* Optional overlay/content if needed */}
+            </div>
+          );
+        })}
+      </div>
 
-      {/* Navigation Arrows (Appear on Hover) */}
+      {/* Navigation Arrows */}
       <div className="slider-nav">
         <button className="nav-arrow left" onClick={prevSlide} aria-label="Previous Slide">
           <ChevronLeft size={32} />
@@ -65,31 +82,6 @@ const HeroSlider = () => {
           ))}
         </div>
         <span className="page-num">{slides.length}</span>
-      </div>
-
-      {/* Circular Timer */}
-      <div className="slider-timer">
-        <svg className="progress-ring" width="44" height="44">
-          <circle 
-            className="progress-ring-circle-bg" 
-            stroke="rgba(255,255,255,0.2)" 
-            strokeWidth="2" 
-            fill="transparent" 
-            r="18" 
-            cx="22" 
-            cy="22" 
-          />
-          <circle 
-            key={currentSlide} 
-            className="progress-ring-circle" 
-            stroke="var(--color-white)" 
-            strokeWidth="2" 
-            fill="transparent" 
-            r="18" 
-            cx="22" 
-            cy="22" 
-          />
-        </svg>
       </div>
     </div>
   );
