@@ -31,32 +31,24 @@ const HeroSlider = () => {
   return (
     <div className="hero-slider">
       <div className="slides-container">
-        {slides.map((slide, i) => {
-          const d = getRelativeIndex(i, currentSlide, slides.length);
-          // width = 80%, gap = 2%, step = 82%, center start = 10%
-          const leftPos = 10 + (d * 82);
-          
-          return (
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={currentSlide}
+            className="slide active"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ width: '100%', left: '0%' }}
+          >
             <div 
-              key={slide.id} 
-              className={`slide ${d === 0 ? 'active' : ''}`}
+              className="slide-bg" 
               style={{ 
-                left: `${leftPos}%`,
-                zIndex: d === 0 ? 10 : 5 - Math.abs(d)
-              }}
-              onClick={() => { if (d !== 0) setCurrentSlide(i); }}
-            >
-              <div 
-                className="slide-bg" 
-                style={{ 
-                  backgroundImage: `url("${slide.image}")`,
-                  backgroundPosition: slide.bgPosition || 'center'
-                }} 
-              />
-              {/* Optional overlay/content if needed */}
-            </div>
-          );
-        })}
+                backgroundImage: `url("${slides[currentSlide].image}")`,
+              }} 
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Progress Dots Pagination */}
