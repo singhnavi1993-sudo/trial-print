@@ -50,7 +50,7 @@ const ShowroomShine = () => {
       </div>
 
       <div className="marquee-wrapper">
-        <div className="marquee-content">
+        <div className="marquee-content marquee-reverse">
           {marqueeItems.map((category, index) => (
             <div className="room-decor-card" key={`${category.id}-${index}`}>
               <div className="room-decor-img-wrapper">
