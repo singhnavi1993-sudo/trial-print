@@ -5,44 +5,37 @@ import './RoomDecor.css';
 const roomCategories = [
   {
     id: 1,
-    title: 'Summer Layering',
-    items: '8 items',
+    title: 'Photo Frames',
     image: `${import.meta.env.BASE_URL}images/Room/1.jpg`,
   },
   {
     id: 2,
-    title: 'New season essential',
-    items: '8 items',
+    title: 'Wall Art',
     image: `${import.meta.env.BASE_URL}images/Room/2.jpg`,
   },
   {
     id: 3,
-    title: 'Jackets & Coats',
-    items: '5 items',
+    title: 'Canvas Prints',
     image: `${import.meta.env.BASE_URL}images/Room/22 (1).jpg`,
   },
   {
     id: 4,
-    title: 'Up to 20% off',
-    items: '9 items',
+    title: 'Acrylic Prints',
     image: `${import.meta.env.BASE_URL}images/Room/Acrylic 2.jpeg`,
   },
   {
     id: 5,
-    title: 'Cozy Blankets',
-    items: '12 items',
+    title: 'Wood & Vinyl Decor',
     image: `${import.meta.env.BASE_URL}images/Room/Gulmohar Backlit Acrylic Wood Vinyl.jpeg`,
   },
   {
     id: 6,
     title: 'Acrylic Glow',
-    items: '15 items',
     image: `${import.meta.env.BASE_URL}images/Room/Sharma Backlit Acrylic.png`,
   },
   {
     id: 7,
-    title: 'Vibrant Art',
-    items: '6 items',
+    title: 'Personalized Decor',
     image: `${import.meta.env.BASE_URL}images/Room/WhatsApp Image 2024-01-02 at 9.33.12 AM.jpeg`,
   }
 ];
