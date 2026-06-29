@@ -13,6 +13,13 @@ const SLIDE_DURATION = 5000;
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,13 +35,23 @@ const HeroSlider = () => {
     return d;
   };
 
+  // Dynamically match the CSS slide widths!
+  const getSlideConfig = () => {
+    if (windowWidth <= 480) return { width: 90, gap: 2 }; // Mobile
+    if (windowWidth <= 768) return { width: 85, gap: 2 }; // Tablet
+    return { width: 80, gap: 2 }; // Desktop
+  };
+
+  const { width: slideWidth, gap } = getSlideConfig();
+  const step = slideWidth + gap;
+  const startPos = (100 - slideWidth) / 2; // Centers the active slide perfectly
+
   return (
     <div className="hero-slider">
       <div className="slides-container">
         {slides.map((slide, i) => {
           const d = getRelativeIndex(i, currentSlide, slides.length);
-          // width = 80%, gap = 2%, step = 82%, center start = 10%
-          const leftPos = 10 + (d * 82);
+          const leftPos = startPos + (d * step);
           
           return (
             <div 
