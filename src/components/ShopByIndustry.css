@@ -46,10 +46,12 @@
   .industry-card {
     height: 180px;
     padding: 1rem;
+    min-width: 0;
   }
   
   .industry-name {
     font-size: 1.1rem;
+    word-wrap: break-word;
   }
 }
 

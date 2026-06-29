@@ -68,7 +68,7 @@
   background-color: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 1.25rem;
+  min-width: 0; /* Prevents text from breaking out of grid cell */
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
   will-change: transform;
@@ -131,6 +131,7 @@
   margin-bottom: 0.5rem;
   color: #000000;
   transition: color 0.3s ease;
+  word-wrap: break-word;
 }
 
 .product-card:hover .product-name {
