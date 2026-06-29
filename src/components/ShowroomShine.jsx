@@ -7,31 +7,31 @@ const showroomCategories = [
     id: 1,
     title: 'Premium Magazines',
     items: '12 items',
-    image: `${import.meta.env.BASE_URL}images/showroom/652234-magazines-1174419.jpg`,
+    image: `${import.meta.env.BASE_URL}images/Showroom/652234-magazines-1174419.jpg`,
   },
   {
     id: 2,
     title: 'Professional ID Cards',
     items: '8 items',
-    image: `${import.meta.env.BASE_URL}images/showroom/id cards (7).jpeg`,
+    image: `${import.meta.env.BASE_URL}images/Showroom/id cards (7).jpeg`,
   },
   {
     id: 3,
     title: 'Display Standees',
     items: '15 items',
-    image: `${import.meta.env.BASE_URL}images/showroom/roll-up-standee-cover-page-template-business-promotion_1017-59811.jpg`,
+    image: `${import.meta.env.BASE_URL}images/Showroom/roll-up-standee-cover-page-template-business-promotion_1017-59811.jpg`,
   },
   {
     id: 4,
     title: 'Business Essentials',
     items: '20 items',
-    image: `${import.meta.env.BASE_URL}images/showroom/images (6).jpeg`,
+    image: `${import.meta.env.BASE_URL}images/Showroom/images (6).jpeg`,
   },
   {
     id: 5,
     title: 'Marketing Materials',
     items: '10 items',
-    image: `${import.meta.env.BASE_URL}images/showroom/images (8).jpeg`,
+    image: `${import.meta.env.BASE_URL}images/Showroom/images (8).jpeg`,
   }
 ];
 
