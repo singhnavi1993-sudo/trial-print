@@ -16,40 +16,40 @@ import BulkOrderForm from '../components/BulkOrderForm';
 const Home = () => {
   return (
     <div className="home-page">
-      <HeroSlider />
+      <div style={{ backgroundColor: 'var(--bg-hero, transparent)' }}><HeroSlider /></div>
       <ScrollDivider />
       
-      <ShopByIndustry />
+      <div style={{ backgroundColor: 'var(--bg-industry, transparent)' }}><ShopByIndustry /></div>
       <ScrollDivider />
       
-      <BestSellers />
+      <div style={{ backgroundColor: 'var(--bg-bestsellers, transparent)' }}><BestSellers /></div>
       <ScrollDivider />
       
-      <ShopByOccasion />
+      <div style={{ backgroundColor: 'var(--bg-occasion, transparent)' }}><ShopByOccasion /></div>
       <ScrollDivider />
       
-      <InstagramReels />
+      <div style={{ backgroundColor: 'var(--bg-instagram, transparent)' }}><InstagramReels /></div>
       <ScrollDivider />
       
-      <CustomIdeas />
+      <div style={{ backgroundColor: 'var(--bg-customideas, transparent)' }}><CustomIdeas /></div>
       <ScrollDivider />
       
-      <PerfectGift />
+      <div style={{ backgroundColor: 'var(--bg-perfectgift, transparent)' }}><PerfectGift /></div>
       <ScrollDivider />
       
-      <RoomDecor />
+      <div style={{ backgroundColor: 'var(--bg-roomdecor, transparent)' }}><RoomDecor /></div>
       <ScrollDivider />
       
-      <ShowroomShine />
+      <div style={{ backgroundColor: 'var(--bg-showroom, transparent)' }}><ShowroomShine /></div>
       <ScrollDivider />
       
-      <ConfidenceBuilder />
+      <div style={{ backgroundColor: 'var(--bg-confidence, transparent)' }}><ConfidenceBuilder /></div>
       <ScrollDivider />
       
-      <B2BServices />
+      <div style={{ backgroundColor: 'var(--bg-b2b, transparent)' }}><B2BServices /></div>
       <ScrollDivider />
       
-      <BulkOrderForm />
+      <div style={{ backgroundColor: 'var(--bg-bulkorder, transparent)' }}><BulkOrderForm /></div>
     </div>
   );
 };

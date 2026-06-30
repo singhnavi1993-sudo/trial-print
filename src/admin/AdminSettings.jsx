@@ -10,7 +10,19 @@ const AdminSettings = () => {
     headerBg: '#ffffff',
     pageBg: '#ffffff',
     navLinkColor: '#18181b',
-    textColor: '#000000'
+    textColor: '#000000',
+    bgHero: 'transparent',
+    bgIndustry: 'transparent',
+    bgBestSellers: 'transparent',
+    bgOccasion: 'transparent',
+    bgInstagram: 'transparent',
+    bgCustomIdeas: 'transparent',
+    bgPerfectGift: 'transparent',
+    bgRoomDecor: 'transparent',
+    bgShowroom: 'transparent',
+    bgConfidence: 'transparent',
+    bgB2B: 'transparent',
+    bgBulkOrder: 'transparent'
   });
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -43,6 +55,10 @@ const AdminSettings = () => {
       document.documentElement.style.setProperty('--nav-link-color', value);
     } else if (name === 'textColor') {
       document.documentElement.style.setProperty('--text-primary', value);
+    } else if (name.startsWith('bg')) {
+      // Convert camelCase (bgHero) to kebab-case (--bg-hero)
+      const cssVar = '--' + name.replace(/([A-Z])/g, '-$1').toLowerCase();
+      document.documentElement.style.setProperty(cssVar, value);
     }
   };
 
@@ -72,7 +88,30 @@ const AdminSettings = () => {
     document.documentElement.style.setProperty('--page-bg', defaultTheme.pageBg);
     document.documentElement.style.setProperty('--nav-link-color', defaultTheme.navLinkColor);
     document.documentElement.style.setProperty('--text-primary', defaultTheme.textColor);
+    
+    // Reset all section variables
+    Object.keys(defaultTheme).forEach(key => {
+      if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
+        const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        document.documentElement.style.setProperty(cssVar, defaultTheme[key]);
+      }
+    });
   };
+
+  const sectionConfig = [
+    { name: 'bgHero', label: 'Banner (Hero)', desc: 'Top slider section' },
+    { name: 'bgIndustry', label: 'Shop By Industry', desc: 'Industry categories grid' },
+    { name: 'bgBestSellers', label: 'Best Sellers', desc: 'Best selling products carousel' },
+    { name: 'bgOccasion', label: 'Shop By Occasion', desc: 'Occasion categories grid' },
+    { name: 'bgInstagram', label: 'Instagram Reels', desc: 'Social media section' },
+    { name: 'bgCustomIdeas', label: 'Custom Ideas', desc: 'Custom branding ideas' },
+    { name: 'bgPerfectGift', label: 'Perfect Gift', desc: 'Gifting section' },
+    { name: 'bgRoomDecor', label: 'Room Decor', desc: 'Room decoration products' },
+    { name: 'bgShowroom', label: 'Showroom Shine', desc: 'Showroom display items' },
+    { name: 'bgConfidence', label: 'Confidence Builder', desc: 'Trust and stats section' },
+    { name: 'bgB2B', label: 'B2B Services', desc: 'Corporate services' },
+    { name: 'bgBulkOrder', label: 'Bulk Order Form', desc: 'Contact/Bulk order section' }
+  ];
 
   return (
     <div className="admin-page">
@@ -206,6 +245,41 @@ const AdminSettings = () => {
                 {message}
               </div>
             )}
+          </form>
+        </div>
+
+        {/* Section Backgrounds */}
+        <div className="settings-card">
+          <div className="settings-card-header">
+            <h3>Section Backgrounds</h3>
+            <p>Customize the background color of specific homepage sections independently. If set to transparent or white, they will inherit the global page background.</p>
+          </div>
+          
+          <form className="settings-form" onSubmit={handleSave}>
+            <div className="form-grid">
+              {sectionConfig.map(section => (
+                <div className="form-group" key={section.name}>
+                  <label>{section.label}</label>
+                  <div className="color-picker-wrapper">
+                    <input 
+                      type="color" 
+                      name={section.name} 
+                      value={theme[section.name] === 'transparent' ? '#ffffff' : theme[section.name]} 
+                      onChange={handleChange}
+                      className="color-picker"
+                    />
+                    <span className="color-value">{theme[section.name]}</span>
+                  </div>
+                  <small>{section.desc}</small>
+                </div>
+              ))}
+            </div>
+
+            <div className="settings-actions">
+              <button type="submit" className="btn btn-primary" disabled={isSaving}>
+                {isSaving ? 'Saving...' : <><Save size={16} /> Save Changes</>}
+              </button>
+            </div>
           </form>
         </div>
         

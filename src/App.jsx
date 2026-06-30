@@ -59,6 +59,13 @@ function App() {
           if (theme.pageBg) document.documentElement.style.setProperty('--page-bg', theme.pageBg);
           if (theme.navLinkColor) document.documentElement.style.setProperty('--nav-link-color', theme.navLinkColor);
           if (theme.textColor) document.documentElement.style.setProperty('--text-primary', theme.textColor);
+          
+          Object.keys(theme).forEach(key => {
+            if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
+              const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+              document.documentElement.style.setProperty(cssVar, theme[key]);
+            }
+          });
         }
       } catch (err) {
         console.error("Failed to load theme settings", err);
