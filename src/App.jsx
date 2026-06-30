@@ -63,7 +63,11 @@ function App() {
           Object.keys(theme).forEach(key => {
             if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
               const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
-              document.documentElement.style.setProperty(cssVar, theme[key]);
+              if (theme[key] !== 'transparent') {
+                document.documentElement.style.setProperty(cssVar, theme[key]);
+              } else {
+                document.documentElement.style.removeProperty(cssVar);
+              }
             }
           });
         }

@@ -1,6 +1,6 @@
 .custom-ideas-section {
   position: relative;
-  background-color: #f5f0eb; /* Beige background */
+  background-color: transparent;
   padding: 5rem 0;
   overflow: hidden; /* Prevent horizontal scroll from peeking cards */
   color: #1a1a1a;

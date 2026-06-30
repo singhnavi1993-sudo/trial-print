@@ -31,25 +31,25 @@ const Home = () => {
       <div style={{ backgroundColor: 'var(--bg-instagram, transparent)' }}><InstagramReels /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-customideas, transparent)' }}><CustomIdeas /></div>
+      <div style={{ backgroundColor: 'var(--bg-customideas, #f5f0eb)' }}><CustomIdeas /></div>
       <ScrollDivider />
       
       <div style={{ backgroundColor: 'var(--bg-perfectgift, transparent)' }}><PerfectGift /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-roomdecor, transparent)' }}><RoomDecor /></div>
+      <div style={{ backgroundColor: 'var(--bg-roomdecor, #f6f5f3)' }}><RoomDecor /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-showroom, transparent)' }}><ShowroomShine /></div>
+      <div style={{ backgroundColor: 'var(--bg-showroom, #f6f5f3)' }}><ShowroomShine /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-confidence, transparent)' }}><ConfidenceBuilder /></div>
+      <div style={{ backgroundColor: 'var(--bg-confidence, #ffffff)' }}><ConfidenceBuilder /></div>
       <ScrollDivider />
       
       <div style={{ backgroundColor: 'var(--bg-b2b, transparent)' }}><B2BServices /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-bulkorder, transparent)' }}><BulkOrderForm /></div>
+      <div><BulkOrderForm /></div>
     </div>
   );
 };

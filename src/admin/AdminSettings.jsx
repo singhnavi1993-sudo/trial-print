@@ -58,7 +58,11 @@ const AdminSettings = () => {
     } else if (name.startsWith('bg')) {
       // Convert camelCase (bgHero) to kebab-case (--bg-hero)
       const cssVar = '--' + name.replace(/([A-Z])/g, '-$1').toLowerCase();
-      document.documentElement.style.setProperty(cssVar, value);
+      if (value !== 'transparent') {
+        document.documentElement.style.setProperty(cssVar, value);
+      } else {
+        document.documentElement.style.removeProperty(cssVar);
+      }
     }
   };
 
