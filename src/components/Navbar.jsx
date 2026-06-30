@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Search, X, ChevronDown } from 'lucide-react';
+import { Menu, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import './Navbar.css';
 
 const dummySearchData = [
@@ -85,28 +85,44 @@ const Navbar = () => {
         <nav className="navbar-nav desktop-only">
           
           <div className="nav-dropdown">
-            <Link to="/industry" className="nav-link">
-              Shop By Industry <ChevronDown size={14} className="dropdown-icon" />
+            <Link to="/products" className="nav-link">
+              Shop <ChevronDown size={14} className="dropdown-icon" />
             </Link>
             <div className="nav-dropdown-menu">
-              {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
-                <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
-                  {sub}
-                </Link>
-              ))}
-            </div>
-          </div>
+              
+              <div className="nested-dropdown">
+                <div className="nav-dropdown-item with-arrow">
+                  Shop By Industry <ChevronRight size={14} />
+                </div>
+                <div className="nested-dropdown-menu">
+                  {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
+                    <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                      {sub}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-          <div className="nav-dropdown">
-            <Link to="/occasion" className="nav-link">
-              Shop By Occasion <ChevronDown size={14} className="dropdown-icon" />
-            </Link>
-            <div className="nav-dropdown-menu">
-              {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
-                <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
-                  {sub}
-                </Link>
-              ))}
+              <div className="nested-dropdown">
+                <div className="nav-dropdown-item with-arrow">
+                  Shop By Occasion <ChevronRight size={14} />
+                </div>
+                <div className="nested-dropdown-menu">
+                  {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
+                    <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                      {sub}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <Link to="/category/business-essentials" className="nav-dropdown-item">Business Essentials</Link>
+              <Link to="/category/led-boards" className="nav-dropdown-item">LED Boards & Signages</Link>
+              <Link to="/category/awards" className="nav-dropdown-item">Awards & Mementoes</Link>
+              <Link to="/category/gifting" className="nav-dropdown-item">Gifting</Link>
+              <Link to="/category/b2b-services" className="nav-dropdown-item">B2B Services</Link>
+              <Link to="/blogs" className="nav-dropdown-item">Blogs</Link>
+
             </div>
           </div>
 
@@ -191,24 +207,37 @@ const Navbar = () => {
           
           <div className="mobile-nav">
             <div className="mobile-nav-group">
-              <h4 className="mobile-nav-title">Shop By Industry</h4>
+              <h4 className="mobile-nav-title">Shop</h4>
+              
               <div className="mobile-subnav">
-                {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
-                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                    {sub}
-                  </Link>
-                ))}
-              </div>
-            </div>
+                <div className="mobile-nested-group">
+                  <h5 className="mobile-nested-title">Shop By Industry</h5>
+                  <div className="mobile-nested-links">
+                    {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
+                      <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
+                        - {sub}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
 
-            <div className="mobile-nav-group">
-              <h4 className="mobile-nav-title">Shop By Occasion</h4>
-              <div className="mobile-subnav">
-                {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
-                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                    {sub}
-                  </Link>
-                ))}
+                <div className="mobile-nested-group">
+                  <h5 className="mobile-nested-title">Shop By Occasion</h5>
+                  <div className="mobile-nested-links">
+                    {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
+                      <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
+                        - {sub}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <Link to="/category/business-essentials" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Business Essentials</Link>
+                <Link to="/category/led-boards" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>LED Boards & Signages</Link>
+                <Link to="/category/awards" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Awards & Mementoes</Link>
+                <Link to="/category/gifting" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Gifting</Link>
+                <Link to="/category/b2b-services" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>B2B Services</Link>
+                <Link to="/blogs" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Blogs</Link>
               </div>
             </div>
 
