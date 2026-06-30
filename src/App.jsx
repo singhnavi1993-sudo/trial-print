@@ -19,6 +19,8 @@ import AdminDashboard from './admin/AdminDashboard';
 import AdminProducts from './admin/AdminProducts';
 import AdminCategories from './admin/AdminCategories';
 import AdminBlogs from './admin/AdminBlogs';
+import AdminSettings from './admin/AdminSettings';
+import { getThemeSettings } from './services/db';
 
 import './App.css';
 
@@ -45,6 +47,22 @@ const MainLayout = ({ showIntro, setShowIntro }) => {
 function App() {
   const [showIntro, setShowIntro] = useState(false);
 
+  // Global Theme Initialization
+  React.useEffect(() => {
+    const initTheme = async () => {
+      try {
+        const theme = await getThemeSettings();
+        if (theme) {
+          if (theme.accentColor1) document.documentElement.style.setProperty('--color-red', theme.accentColor1);
+          if (theme.accentColor2) document.documentElement.style.setProperty('--color-yellow', theme.accentColor2);
+        }
+      } catch (err) {
+        console.error("Failed to load theme settings", err);
+      }
+    };
+    initTheme();
+  }, []);
+
   return (
     <Router>
       <Routes>
@@ -56,6 +74,7 @@ function App() {
           <Route path="products" element={<AdminProducts />} />
           <Route path="categories" element={<AdminCategories />} />
           <Route path="blogs" element={<AdminBlogs />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
 
         {/* Public Routes */}

@@ -7,13 +7,16 @@ import {
   addDoc, 
   updateDoc, 
   deleteDoc, 
-  doc 
+  doc,
+  getDoc,
+  setDoc
 } from 'firebase/firestore';
 
 const PRODUCTS_KEY = 'printcopy_products';
 const CATEGORIES_KEY = 'printcopy_categories';
 const BLOGS_KEY = 'printcopy_blogs';
 const AUTH_KEY = 'printcopy_admin_auth';
+const THEME_KEY = 'printcopy_theme';
 
 // --- Firebase Configuration ---
 const firebaseConfig = {
@@ -85,6 +88,9 @@ export const initLocalDB = () => {
   }
   if (!localStorage.getItem(BLOGS_KEY)) {
     localStorage.setItem(BLOGS_KEY, JSON.stringify([]));
+  }
+  if (!localStorage.getItem(THEME_KEY)) {
+    localStorage.setItem(THEME_KEY, JSON.stringify({ accentColor1: '#dc2626', accentColor2: '#f59e0b' }));
   }
 };
 
@@ -235,5 +241,37 @@ export const deleteBlog = async (id) => {
   } else {
     const blogs = JSON.parse(localStorage.getItem(BLOGS_KEY) || '[]').filter(b => b.id !== id);
     localStorage.setItem(BLOGS_KEY, JSON.stringify(blogs));
+  }
+};
+
+// THEME
+export const getThemeSettings = async () => {
+  if (isFirebaseConfigured) {
+    try {
+      const docRef = doc(db, "settings", "theme");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        return docSnap.data();
+      } else {
+        const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b' };
+        await setDoc(docRef, defaultTheme);
+        return defaultTheme;
+      }
+    } catch (error) {
+      console.error("Error fetching theme:", error);
+      return { accentColor1: '#dc2626', accentColor2: '#f59e0b' };
+    }
+  } else {
+    initLocalDB();
+    return JSON.parse(localStorage.getItem(THEME_KEY) || '{"accentColor1":"#dc2626","accentColor2":"#f59e0b"}');
+  }
+};
+
+export const updateThemeSettings = async (themeSettings) => {
+  if (isFirebaseConfigured) {
+    const docRef = doc(db, "settings", "theme");
+    await setDoc(docRef, themeSettings, { merge: true });
+  } else {
+    localStorage.setItem(THEME_KEY, JSON.stringify(themeSettings));
   }
 };

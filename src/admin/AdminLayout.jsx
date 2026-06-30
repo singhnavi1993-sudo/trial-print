@@ -24,6 +24,7 @@ const AdminLayout = () => {
     { path: '/admin/products', icon: <Package size={20} />, label: 'Products' },
     { path: '/admin/categories', icon: <Tags size={20} />, label: 'Categories' },
     { path: '/admin/blogs', icon: <FileText size={20} />, label: 'Blogs' },
+    { path: '/admin/settings', icon: <Settings size={20} />, label: 'Settings' },
   ];
 
   if (!isAuthenticated()) return null; // Prevent flash of content before redirect
