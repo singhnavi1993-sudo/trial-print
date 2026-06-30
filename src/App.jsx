@@ -61,7 +61,13 @@ function App() {
           if (theme.textColor) document.documentElement.style.setProperty('--text-primary', theme.textColor);
           
           Object.keys(theme).forEach(key => {
-            if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
+            if (key === 'textFooter') {
+              if (theme[key] !== 'transparent') {
+                document.documentElement.style.setProperty('--text-footer', theme[key]);
+              } else {
+                document.documentElement.style.removeProperty('--text-footer');
+              }
+            } else if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
               const cssVar = '--bg-' + key.substring(2).toLowerCase();
               if (theme[key] !== 'transparent') {
                 document.documentElement.style.setProperty(cssVar, theme[key]);

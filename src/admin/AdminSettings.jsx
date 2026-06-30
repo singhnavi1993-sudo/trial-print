@@ -55,6 +55,12 @@ const AdminSettings = () => {
       document.documentElement.style.setProperty('--nav-link-color', value);
     } else if (name === 'textColor') {
       document.documentElement.style.setProperty('--text-primary', value);
+    } else if (name === 'textFooter') {
+      if (value !== 'transparent') {
+        document.documentElement.style.setProperty('--text-footer', value);
+      } else {
+        document.documentElement.style.removeProperty('--text-footer');
+      }
     } else if (name.startsWith('bg')) {
       const cssVar = '--bg-' + name.substring(2).toLowerCase();
       if (value !== 'transparent') {
@@ -101,7 +107,9 @@ const AdminSettings = () => {
       bgShowroom: 'transparent',
       bgConfidence: 'transparent',
       bgB2B: 'transparent',
-      bgBulkOrder: 'transparent'
+      bgBulkOrder: 'transparent',
+      bgFooter: 'transparent',
+      textFooter: 'transparent'
     };
     setTheme(defaultTheme);
     document.documentElement.style.setProperty('--color-red', defaultTheme.accentColor1);
@@ -245,7 +253,39 @@ const AdminSettings = () => {
                   />
                   <span className="color-value">{theme.textColor}</span>
                 </div>
-                <small>Global text color for all headings and content.</small>
+                <p className="admin-help">Choose the primary text color (does not affect footer).</p>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Footer Background Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="bgFooter" 
+                    value={theme.bgFooter === 'transparent' ? '#ffffff' : theme.bgFooter || '#ffffff'} 
+                    onChange={handleChange} 
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.bgFooter}</span>
+                </div>
+                <p className="admin-help">Background color for the footer.</p>
+              </div>
+
+              <div className="form-group">
+                <label>Footer Text Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="textFooter" 
+                    value={theme.textFooter === 'transparent' ? '#ffffff' : theme.textFooter || '#ffffff'} 
+                    onChange={handleChange} 
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.textFooter}</span>
+                </div>
+                <p className="admin-help">Text color specifically for the footer.</p>
               </div>
             </div>
 

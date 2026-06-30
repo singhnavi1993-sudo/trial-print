@@ -108,7 +108,9 @@ export const initLocalDB = () => {
       bgShowroom: 'transparent',
       bgConfidence: 'transparent',
       bgB2B: 'transparent',
-      bgBulkOrder: 'transparent'
+      bgBulkOrder: 'transparent',
+      bgFooter: 'transparent',
+      textFooter: 'transparent'
     }));
   }
 };
@@ -290,18 +292,20 @@ export const getThemeSettings = async () => {
           bgShowroom: 'transparent',
           bgConfidence: 'transparent',
           bgB2B: 'transparent',
-          bgBulkOrder: 'transparent'
+          bgBulkOrder: 'transparent',
+          bgFooter: 'transparent',
+          textFooter: 'transparent'
         };
         await setDoc(docRef, defaultTheme);
         return defaultTheme;
       }
     } catch (error) {
       console.error("Error fetching theme:", error);
-      return { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000', bgHero: 'transparent', bgIndustry: 'transparent', bgBestSellers: 'transparent', bgOccasion: 'transparent', bgInstagram: 'transparent', bgCustomIdeas: 'transparent', bgPerfectGift: 'transparent', bgRoomDecor: 'transparent', bgShowroom: 'transparent', bgConfidence: 'transparent', bgB2B: 'transparent', bgBulkOrder: 'transparent' };
+      return { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000', bgHero: 'transparent', bgIndustry: 'transparent', bgBestSellers: 'transparent', bgOccasion: 'transparent', bgInstagram: 'transparent', bgCustomIdeas: 'transparent', bgPerfectGift: 'transparent', bgRoomDecor: 'transparent', bgShowroom: 'transparent', bgConfidence: 'transparent', bgB2B: 'transparent', bgBulkOrder: 'transparent', bgFooter: 'transparent', textFooter: 'transparent' };
     }
   } else {
     initLocalDB();
-    const defaultFallback = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000', bgHero: 'transparent', bgIndustry: 'transparent', bgBestSellers: 'transparent', bgOccasion: 'transparent', bgInstagram: 'transparent', bgCustomIdeas: 'transparent', bgPerfectGift: 'transparent', bgRoomDecor: 'transparent', bgShowroom: 'transparent', bgConfidence: 'transparent', bgB2B: 'transparent', bgBulkOrder: 'transparent' };
+    const defaultFallback = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000', bgHero: 'transparent', bgIndustry: 'transparent', bgBestSellers: 'transparent', bgOccasion: 'transparent', bgInstagram: 'transparent', bgCustomIdeas: 'transparent', bgPerfectGift: 'transparent', bgRoomDecor: 'transparent', bgShowroom: 'transparent', bgConfidence: 'transparent', bgB2B: 'transparent', bgBulkOrder: 'transparent', bgFooter: 'transparent', textFooter: 'transparent' };
     try {
       const stored = JSON.parse(localStorage.getItem(THEME_KEY));
       return { ...defaultFallback, ...stored };

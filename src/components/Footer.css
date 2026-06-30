@@ -1,14 +1,13 @@
 .footer {
   margin-top: auto;
   position: relative;
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  background-color: var(--bg-footer, var(--bg-secondary));
+  color: var(--text-footer, var(--text-primary));
   border-top: 1px solid var(--border-color);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 :root.dark-mode .footer {
-  background-color: #050505; /* Deep black for dark mode footer */
   border-top: none;
 }
 
