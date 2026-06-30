@@ -43,7 +43,7 @@ const Home = () => {
       <div style={{ backgroundColor: 'var(--bg-showroom, #f6f5f3)' }}><ShowroomShine /></div>
       <ScrollDivider />
       
-      <div style={{ backgroundColor: 'var(--bg-confidence, #ffffff)' }}><ConfidenceBuilder /></div>
+      <div style={{ backgroundColor: 'var(--bg-confidence, var(--color-gray-50))' }}><ConfidenceBuilder /></div>
       <ScrollDivider />
       
       <div style={{ backgroundColor: 'var(--bg-b2b, transparent)' }}><B2BServices /></div>
