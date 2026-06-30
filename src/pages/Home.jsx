@@ -49,7 +49,7 @@ const Home = () => {
       <div style={{ backgroundColor: 'var(--bg-b2b, transparent)' }}><B2BServices /></div>
       <ScrollDivider />
       
-      <div><BulkOrderForm /></div>
+      <div style={{ backgroundColor: 'var(--bg-bulkorder, transparent)' }}><BulkOrderForm /></div>
     </div>
   );
 };
