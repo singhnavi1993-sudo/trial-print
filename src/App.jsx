@@ -62,7 +62,7 @@ function App() {
           
           Object.keys(theme).forEach(key => {
             if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
-              const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+              const cssVar = '--bg-' + key.substring(2).toLowerCase();
               if (theme[key] !== 'transparent') {
                 document.documentElement.style.setProperty(cssVar, theme[key]);
               } else {

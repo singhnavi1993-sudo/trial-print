@@ -56,8 +56,7 @@ const AdminSettings = () => {
     } else if (name === 'textColor') {
       document.documentElement.style.setProperty('--text-primary', value);
     } else if (name.startsWith('bg')) {
-      // Convert camelCase (bgHero) to kebab-case (--bg-hero)
-      const cssVar = '--' + name.replace(/([A-Z])/g, '-$1').toLowerCase();
+      const cssVar = '--bg-' + name.substring(2).toLowerCase();
       if (value !== 'transparent') {
         document.documentElement.style.setProperty(cssVar, value);
       } else {
@@ -115,7 +114,7 @@ const AdminSettings = () => {
     // Reset all section variables
     Object.keys(defaultTheme).forEach(key => {
       if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
-        const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+        const cssVar = '--bg-' + key.substring(2).toLowerCase();
         if (defaultTheme[key] !== 'transparent') {
           document.documentElement.style.setProperty(cssVar, defaultTheme[key]);
         } else {
