@@ -84,7 +84,26 @@ const AdminSettings = () => {
   };
 
   const handleReset = () => {
-    const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000' };
+    const defaultTheme = { 
+      accentColor1: '#dc2626', 
+      accentColor2: '#f59e0b', 
+      headerBg: '#ffffff', 
+      pageBg: '#ffffff', 
+      navLinkColor: '#18181b', 
+      textColor: '#000000',
+      bgHero: 'transparent',
+      bgIndustry: 'transparent',
+      bgBestSellers: 'transparent',
+      bgOccasion: 'transparent',
+      bgInstagram: 'transparent',
+      bgCustomIdeas: 'transparent',
+      bgPerfectGift: 'transparent',
+      bgRoomDecor: 'transparent',
+      bgShowroom: 'transparent',
+      bgConfidence: 'transparent',
+      bgB2B: 'transparent',
+      bgBulkOrder: 'transparent'
+    };
     setTheme(defaultTheme);
     document.documentElement.style.setProperty('--color-red', defaultTheme.accentColor1);
     document.documentElement.style.setProperty('--color-yellow', defaultTheme.accentColor2);
@@ -97,7 +116,11 @@ const AdminSettings = () => {
     Object.keys(defaultTheme).forEach(key => {
       if (key.startsWith('bg') && key !== 'bgPrimary' && key !== 'bgSecondary') {
         const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
-        document.documentElement.style.setProperty(cssVar, defaultTheme[key]);
+        if (defaultTheme[key] !== 'transparent') {
+          document.documentElement.style.setProperty(cssVar, defaultTheme[key]);
+        } else {
+          document.documentElement.style.removeProperty(cssVar);
+        }
       }
     });
   };
