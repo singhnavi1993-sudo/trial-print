@@ -55,6 +55,8 @@ function App() {
         if (theme) {
           if (theme.accentColor1) document.documentElement.style.setProperty('--color-red', theme.accentColor1);
           if (theme.accentColor2) document.documentElement.style.setProperty('--color-yellow', theme.accentColor2);
+          if (theme.headerBg) document.documentElement.style.setProperty('--header-bg', theme.headerBg);
+          if (theme.pageBg) document.documentElement.style.setProperty('--page-bg', theme.pageBg);
         }
       } catch (err) {
         console.error("Failed to load theme settings", err);

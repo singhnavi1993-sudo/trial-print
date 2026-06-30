@@ -15,7 +15,7 @@
   --font-secondary: 'Inter', sans-serif;
 
   /* Theme Variables */
-  --bg-primary: var(--color-white);
+  --bg-primary: var(--page-bg, var(--color-white));
   --bg-secondary: var(--color-gray-50);
   --text-primary: var(--color-black);
   --border-color: var(--color-gray-200);

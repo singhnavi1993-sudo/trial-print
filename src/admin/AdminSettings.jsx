@@ -6,7 +6,9 @@ import './AdminSettings.css';
 const AdminSettings = () => {
   const [theme, setTheme] = useState({
     accentColor1: '#dc2626',
-    accentColor2: '#f59e0b'
+    accentColor2: '#f59e0b',
+    headerBg: '#ffffff',
+    pageBg: '#ffffff'
   });
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -31,6 +33,10 @@ const AdminSettings = () => {
       document.documentElement.style.setProperty('--color-red', value);
     } else if (name === 'accentColor2') {
       document.documentElement.style.setProperty('--color-yellow', value);
+    } else if (name === 'headerBg') {
+      document.documentElement.style.setProperty('--header-bg', value);
+    } else if (name === 'pageBg') {
+      document.documentElement.style.setProperty('--page-bg', value);
     }
   };
 
@@ -52,10 +58,12 @@ const AdminSettings = () => {
   };
 
   const handleReset = () => {
-    const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b' };
+    const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff' };
     setTheme(defaultTheme);
     document.documentElement.style.setProperty('--color-red', defaultTheme.accentColor1);
     document.documentElement.style.setProperty('--color-yellow', defaultTheme.accentColor2);
+    document.documentElement.style.setProperty('--header-bg', defaultTheme.headerBg);
+    document.documentElement.style.setProperty('--page-bg', defaultTheme.pageBg);
   };
 
   return (
@@ -101,6 +109,38 @@ const AdminSettings = () => {
                   <span className="color-value">{theme.accentColor2}</span>
                 </div>
                 <small>Used for borders, underlines, and secondary accents.</small>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Header Background Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="headerBg" 
+                    value={theme.headerBg} 
+                    onChange={handleChange}
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.headerBg}</span>
+                </div>
+                <small>Background color for the top navigation bar.</small>
+              </div>
+
+              <div className="form-group">
+                <label>Page Background Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="pageBg" 
+                    value={theme.pageBg} 
+                    onChange={handleChange}
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.pageBg}</span>
+                </div>
+                <small>Global background color for the entire website.</small>
               </div>
             </div>
 

@@ -1,5 +1,5 @@
 .navbar-header {
-  background-color: var(--bg-primary, var(--color-white));
+  background-color: var(--header-bg, var(--bg-primary));
   border-bottom: 1px solid var(--border-color, var(--color-gray-200));
   position: sticky;
   top: 0;

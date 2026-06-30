@@ -90,7 +90,12 @@ export const initLocalDB = () => {
     localStorage.setItem(BLOGS_KEY, JSON.stringify([]));
   }
   if (!localStorage.getItem(THEME_KEY)) {
-    localStorage.setItem(THEME_KEY, JSON.stringify({ accentColor1: '#dc2626', accentColor2: '#f59e0b' }));
+    localStorage.setItem(THEME_KEY, JSON.stringify({ 
+      accentColor1: '#dc2626', 
+      accentColor2: '#f59e0b',
+      headerBg: '#ffffff',
+      pageBg: '#ffffff'
+    }));
   }
 };
 
@@ -253,17 +258,22 @@ export const getThemeSettings = async () => {
       if (docSnap.exists()) {
         return docSnap.data();
       } else {
-        const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b' };
+        const defaultTheme = { 
+          accentColor1: '#dc2626', 
+          accentColor2: '#f59e0b',
+          headerBg: '#ffffff',
+          pageBg: '#ffffff'
+        };
         await setDoc(docRef, defaultTheme);
         return defaultTheme;
       }
     } catch (error) {
       console.error("Error fetching theme:", error);
-      return { accentColor1: '#dc2626', accentColor2: '#f59e0b' };
+      return { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff' };
     }
   } else {
     initLocalDB();
-    return JSON.parse(localStorage.getItem(THEME_KEY) || '{"accentColor1":"#dc2626","accentColor2":"#f59e0b"}');
+    return JSON.parse(localStorage.getItem(THEME_KEY) || '{"accentColor1":"#dc2626","accentColor2":"#f59e0b","headerBg":"#ffffff","pageBg":"#ffffff"}');
   }
 };
 
