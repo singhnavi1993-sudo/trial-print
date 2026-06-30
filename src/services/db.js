@@ -94,7 +94,9 @@ export const initLocalDB = () => {
       accentColor1: '#dc2626', 
       accentColor2: '#f59e0b',
       headerBg: '#ffffff',
-      pageBg: '#ffffff'
+      pageBg: '#ffffff',
+      navLinkColor: '#18181b',
+      textColor: '#000000'
     }));
   }
 };
@@ -262,18 +264,20 @@ export const getThemeSettings = async () => {
           accentColor1: '#dc2626', 
           accentColor2: '#f59e0b',
           headerBg: '#ffffff',
-          pageBg: '#ffffff'
+          pageBg: '#ffffff',
+          navLinkColor: '#18181b',
+          textColor: '#000000'
         };
         await setDoc(docRef, defaultTheme);
         return defaultTheme;
       }
     } catch (error) {
       console.error("Error fetching theme:", error);
-      return { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff' };
+      return { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000' };
     }
   } else {
     initLocalDB();
-    return JSON.parse(localStorage.getItem(THEME_KEY) || '{"accentColor1":"#dc2626","accentColor2":"#f59e0b","headerBg":"#ffffff","pageBg":"#ffffff"}');
+    return JSON.parse(localStorage.getItem(THEME_KEY) || '{"accentColor1":"#dc2626","accentColor2":"#f59e0b","headerBg":"#ffffff","pageBg":"#ffffff","navLinkColor":"#18181b","textColor":"#000000"}');
   }
 };
 

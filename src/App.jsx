@@ -57,6 +57,8 @@ function App() {
           if (theme.accentColor2) document.documentElement.style.setProperty('--color-yellow', theme.accentColor2);
           if (theme.headerBg) document.documentElement.style.setProperty('--header-bg', theme.headerBg);
           if (theme.pageBg) document.documentElement.style.setProperty('--page-bg', theme.pageBg);
+          if (theme.navLinkColor) document.documentElement.style.setProperty('--nav-link-color', theme.navLinkColor);
+          if (theme.textColor) document.documentElement.style.setProperty('--text-primary', theme.textColor);
         }
       } catch (err) {
         console.error("Failed to load theme settings", err);

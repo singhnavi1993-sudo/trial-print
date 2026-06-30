@@ -8,7 +8,9 @@ const AdminSettings = () => {
     accentColor1: '#dc2626',
     accentColor2: '#f59e0b',
     headerBg: '#ffffff',
-    pageBg: '#ffffff'
+    pageBg: '#ffffff',
+    navLinkColor: '#18181b',
+    textColor: '#000000'
   });
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -37,6 +39,10 @@ const AdminSettings = () => {
       document.documentElement.style.setProperty('--header-bg', value);
     } else if (name === 'pageBg') {
       document.documentElement.style.setProperty('--page-bg', value);
+    } else if (name === 'navLinkColor') {
+      document.documentElement.style.setProperty('--nav-link-color', value);
+    } else if (name === 'textColor') {
+      document.documentElement.style.setProperty('--text-primary', value);
     }
   };
 
@@ -58,12 +64,14 @@ const AdminSettings = () => {
   };
 
   const handleReset = () => {
-    const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff' };
+    const defaultTheme = { accentColor1: '#dc2626', accentColor2: '#f59e0b', headerBg: '#ffffff', pageBg: '#ffffff', navLinkColor: '#18181b', textColor: '#000000' };
     setTheme(defaultTheme);
     document.documentElement.style.setProperty('--color-red', defaultTheme.accentColor1);
     document.documentElement.style.setProperty('--color-yellow', defaultTheme.accentColor2);
     document.documentElement.style.setProperty('--header-bg', defaultTheme.headerBg);
     document.documentElement.style.setProperty('--page-bg', defaultTheme.pageBg);
+    document.documentElement.style.setProperty('--nav-link-color', defaultTheme.navLinkColor);
+    document.documentElement.style.setProperty('--text-primary', defaultTheme.textColor);
   };
 
   return (
@@ -141,6 +149,38 @@ const AdminSettings = () => {
                   <span className="color-value">{theme.pageBg}</span>
                 </div>
                 <small>Global background color for the entire website.</small>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Nav Link Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="navLinkColor" 
+                    value={theme.navLinkColor} 
+                    onChange={handleChange}
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.navLinkColor}</span>
+                </div>
+                <small>Color for header navigation links.</small>
+              </div>
+
+              <div className="form-group">
+                <label>Text & Titles Color</label>
+                <div className="color-picker-wrapper">
+                  <input 
+                    type="color" 
+                    name="textColor" 
+                    value={theme.textColor} 
+                    onChange={handleChange}
+                    className="color-picker"
+                  />
+                  <span className="color-value">{theme.textColor}</span>
+                </div>
+                <small>Global text color for all headings and content.</small>
               </div>
             </div>
 
