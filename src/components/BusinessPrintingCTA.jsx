@@ -43,8 +43,10 @@ const BusinessPrintingCTA = () => {
                   </svg>
                   <span>whatsapp now </span>
                 </a>
-                <span> </span>
-                <a href="tel:+919797470270" className="cta-phone-number-link">+91 9797470270</a>
+                <div className="cta-numbers-stack">
+                  <a href="tel:+919797470270" className="cta-phone-number-link">+91 9797470270</a>
+                  <a href="tel:+919419189999" className="cta-phone-number-link">+91 9419189999</a>
+                </div>
               </div>
             </div>
           </div>

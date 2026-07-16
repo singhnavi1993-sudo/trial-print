@@ -83,7 +83,47 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-right">
-          <div className="header-search-box desktop-only">
+          <div className="header-search-box show-above-768">
+            <input 
+              type="text" 
+              placeholder="Search for products, categories, or services..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="clear-btn" onClick={() => setSearchQuery('')} style={{ marginRight: '8px' }}>
+                <X size={16} />
+              </button>
+            )}
+            <Search size={18} className="search-icon" />
+            
+            {searchQuery && (
+              <div className="header-search-results">
+                {searchResults.length > 0 ? (
+                  searchResults.map(result => (
+                    <Link 
+                      key={result.id} 
+                      to={result.link} 
+                      className="search-result-item"
+                      onClick={() => setSearchQuery('')}
+                    >
+                      <span className="result-title">{result.title}</span>
+                      <span className={`result-badge ${result.type.toLowerCase()}`}>{result.type}</span>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="no-results">No results found for "{searchQuery}"</div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile search bar (shown only on mobile/tablet below 1024px) */}
+      <div className="navbar-mobile-search-row hide-above-768">
+        <div className="container">
+          <div className="header-search-box">
             <input 
               type="text" 
               placeholder="Search for products, categories, or services..." 

@@ -22,6 +22,14 @@ const PerfectGift = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
   
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Drag states
   const [dragStartX, setDragStartX] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -195,18 +203,36 @@ const PerfectGift = () => {
               opacity = 1;
             } else {
               const sign = diff < 0 ? -1 : 1;
+              let offset1 = 220;
+              let offset2 = 410;
+              let offset3 = 560;
+
+              if (windowWidth < 480) {
+                offset1 = 70;
+                offset2 = 135;
+                offset3 = 190;
+              } else if (windowWidth < 768) {
+                offset1 = 95;
+                offset2 = 180;
+                offset3 = 250;
+              } else if (windowWidth < 1024) {
+                offset1 = 155;
+                offset2 = 295;
+                offset3 = 410;
+              }
+
               if (absDiff === 1) {
-                translateX = sign * 220;
+                translateX = sign * offset1;
                 scale = 0.85;
                 rotateY = diff < 0 ? 30 : -30;
                 opacity = 0.9;
               } else if (absDiff === 2) {
-                translateX = sign * 410;
+                translateX = sign * offset2;
                 scale = 0.7;
                 rotateY = diff < 0 ? 35 : -35;
                 opacity = 0.7;
               } else if (absDiff === 3) {
-                translateX = sign * 560;
+                translateX = sign * offset3;
                 scale = 0.55;
                 rotateY = diff < 0 ? 40 : -40;
                 opacity = 0.45;

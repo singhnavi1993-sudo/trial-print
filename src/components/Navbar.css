@@ -222,7 +222,7 @@
 }
 
 .desktop-only {
-  display: none;
+  display: none !important;
 }
 
 .menu-btn {
@@ -647,5 +647,139 @@ body.dark-mode .header-search-results .search-result-item:hover {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Mobile Search Row & Visibility Classes */
+.hide-above-768 {
+  display: block; /* Visible on mobile */
+}
+
+.show-above-768 {
+  display: none !important; /* Hidden on mobile */
+}
+
+.navbar-mobile-search-row {
+  border-bottom: 1px solid var(--border-color, var(--color-gray-200));
+  background-color: var(--header-bg, var(--bg-primary));
+  padding: 0.6rem 0 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-mobile-search-row .header-search-box {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Constrain mobile search box size on small mobile screens */
+@media (min-width: 480px) and (max-width: 767px) {
+  .navbar-mobile-search-row .header-search-box {
+    max-width: 350px; 
+    margin: 0 auto;
+  }
+}
+
+.mobile-only {
+  display: flex !important;
+}
+
+@media (min-width: 768px) {
+  .show-above-768 {
+    display: flex !important; /* Show inline on tablet and desktop */
+  }
+  .hide-above-768 {
+    display: none !important; /* Hide secondary mobile search row */
+  }
+  
+  /* Constrain inline search box width specifically on tablets (768px to 1024px) */
+  .navbar-container .header-search-box.show-above-768 {
+    width: 400px; /* Centered inline search bar on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .desktop-only {
+    display: flex !important;
+  }
+}
+
+/* Responsive spacing optimizations for small laptop screens (1024px to 1200px) */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .navbar-bottom-row .container {
+    padding: 0 0.4rem; /* Maximize available horizontal width on tablets */
+  }
+  .navbar-bottom-row .navbar-nav {
+    gap: 0.4rem; /* Ultra-tight spacing to fit all 9 items in one row */
+  }
+  .navbar-bottom-row .nav-link {
+    font-size: 0.72rem; /* Compact readable font size for tablet viewports */
+    padding: 0.5rem 0.1rem; /* Minimize horizontal padding to free up horizontal room */
+  }
+  .navbar-bottom-row .dropdown-icon {
+    display: inline-block !important; /* Keep chevrons visible */
+    width: 10px !important; /* Scale down size to fit */
+    height: 10px !important;
+    margin-left: 2px !important;
+  }
+  .header-search-box {
+    width: 310px; /* Slimmer search box to ensure top row fits logo comfortably */
+  }
+}
+
+/* Responsive spacing optimizations for mid-size desktop screens (1200px to 1480px) */
+@media (min-width: 1201px) and (max-width: 1480px) {
+  .navbar-bottom-row .navbar-nav {
+    gap: 1.3rem; /* Comfortably compressed spacing */
+  }
+  .navbar-bottom-row .nav-link {
+    font-size: 0.88rem;
+  }
+  .header-search-box {
+    width: 450px;
+  }
+}
+
+/* Perfect logo centering on mobile screens */
+@media (max-width: 767px) {
+  .navbar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo img {
+    margin: 0 auto !important;
+  }
+  
+  .menu-btn {
+    position: absolute;
+    left: 1.25rem; /* Align menu button cleanly on the left margin */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Keep menu button interactive */
+  }
+  
+  .navbar-right {
+    display: none !important; /* Hide empty right column to prevent offsetting the centered logo */
   }
 }
