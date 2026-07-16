@@ -40,7 +40,7 @@ const marqueeItems = [...showroomCategories, ...showroomCategories];
 
 const ShowroomShine = () => {
   return (
-    <section className="room-decor-section">
+    <section className="room-decor-section showroom-section">
       
       <div className="container">
         <div className="center-header">

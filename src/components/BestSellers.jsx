@@ -11,7 +11,7 @@ const BestSellers = () => {
       // Fetch products, filter by best seller, and sort by priority order
       const allProducts = await getProducts();
       const filtered = allProducts
-        .filter(p => p.isBestSeller)
+        .filter(p => p.isBestSeller && !p.isHidden)
         .sort((a, b) => a.order - b.order);
       
       setBestSellers(filtered);

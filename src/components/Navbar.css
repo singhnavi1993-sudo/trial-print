@@ -19,7 +19,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 70px; /* Shorter height for top row containing logo */
+  transition: height 0.3s ease;
+}
+
+.navbar-header.scrolled .navbar-container {
+  height: 60px; /* Compact height on scroll */
+}
+
+/* Secondary Navigation Row for Desktop */
+.navbar-bottom-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #FFFB00 !important; /* Vibrant yellow background */
+  padding: 0.65rem 0;
+  transition: padding 0.3s ease;
+}
+
+.navbar-header.scrolled .navbar-bottom-row {
+  padding: 0.45rem 0; /* Tighten secondary row padding on scroll */
+}
+
+.navbar-bottom-row .navbar-nav {
+  display: flex;
+  justify-content: center; /* Center-align navigation items on the line */
+  gap: 2.2rem; /* Restored standard luxury gap spacing */
+}
+
+.navbar-bottom-row .nav-link {
+  color: #111111 !important; /* Force dark gray/black text color for contrast on yellow */
+}
+
+.navbar-bottom-row .nav-link:hover {
+  color: #b91c1c !important; /* Dark red color on hover */
+}
+
+.navbar-bottom-row .nav-link::after {
+  background-color: #111111 !important; /* Dark hover underline instead of yellow */
+}
+
+.navbar-bottom-row .dropdown-icon {
+  color: #111111 !important;
 }
 
 .navbar-left {
@@ -39,14 +79,9 @@
 .logo .text-red { color: var(--color-red); }
 .logo .text-yellow { color: var(--color-yellow); }
 
-.navbar-nav {
-  display: flex;
-  gap: 2.5rem;
-}
-
 .nav-link {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem; /* Restored standard luxury font-size */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: relative;
@@ -54,6 +89,7 @@
   color: var(--nav-link-color, var(--text-primary, var(--color-gray-800)));
   display: flex;
   align-items: center;
+  white-space: nowrap; /* Prevent text wrapping within the header navbar */
 }
 
 .nav-link:hover {
@@ -452,4 +488,164 @@
 
 .mobile-nav-link:hover, .single-links .mobile-nav-title:hover {
   color: var(--color-yellow);
+}
+
+/* Permanent Desktop Search Box Styles */
+.header-search-box {
+  position: relative;
+  width: 580px; /* Expanded wide search box */
+  height: 44px;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-gray-50, #f8f9fa);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 22px;
+  padding: 0 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:not(.dark-mode) .header-search-box {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+body.dark-mode .header-search-box {
+  background-color: #1e1e1e;
+  border-color: #333333;
+}
+
+.header-search-box:focus-within {
+  border-color: var(--color-red, #dc2626);
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.08);
+}
+
+body.dark-mode .header-search-box:focus-within {
+  background-color: #121212;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.15);
+}
+
+.header-search-box .search-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.header-search-box input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-primary, #111111);
+}
+
+.header-search-box .clear-btn {
+  border: none;
+  background: none;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
+.header-search-box .clear-btn:hover {
+  color: var(--color-red, #dc2626);
+}
+
+/* Autocomplete Dropdown List under Search Box */
+.header-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 1100;
+  max-height: 350px;
+  overflow-y: auto;
+  animation: searchDrop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode .header-search-results {
+  background-color: #121212;
+  border-color: #333333;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.header-search-results .search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border-color, #f3f4f6);
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-mode .header-search-results .search-result-item {
+  border-bottom-color: #222222;
+  color: #e5e7eb;
+}
+
+.header-search-results .search-result-item:hover {
+  background-color: #f3f4f6;
+  color: var(--color-red, #dc2626);
+}
+
+body.dark-mode .header-search-results .search-result-item:hover {
+  background-color: #1e1e1e;
+}
+
+.header-search-results .result-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 75%;
+}
+
+.header-search-results .result-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.header-search-results .result-badge.product {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: var(--color-red, #dc2626);
+}
+
+.header-search-results .result-badge.category {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.header-search-results .no-results {
+  padding: 1.25rem;
+  color: #9ca3af;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+@keyframes searchDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

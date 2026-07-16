@@ -3,6 +3,10 @@
   z-index: 10;
 }
 
+.occasion-section .section-header h2 {
+  color: var(--color-white, #ffffff);
+}
+
 .text-yellow {
   background: linear-gradient(to right, var(--color-yellow), #fcd34d) !important;
   -webkit-background-clip: text !important;

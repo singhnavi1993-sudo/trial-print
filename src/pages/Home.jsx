@@ -12,6 +12,7 @@ import ShowroomShine from '../components/ShowroomShine';
 import ConfidenceBuilder from '../components/ConfidenceBuilder';
 import B2BServices from '../components/B2BServices';
 import BulkOrderForm from '../components/BulkOrderForm';
+import BusinessPrintingCTA from '../components/BusinessPrintingCTA';
 
 const Home = () => {
   return (
@@ -26,6 +27,9 @@ const Home = () => {
       <ScrollDivider />
       
       <div style={{ backgroundColor: 'var(--bg-occasion, transparent)' }}><ShopByOccasion /></div>
+      <ScrollDivider />
+      
+      <BusinessPrintingCTA />
       <ScrollDivider />
       
       <div style={{ backgroundColor: 'var(--bg-instagram, transparent)' }}><InstagramReels /></div>

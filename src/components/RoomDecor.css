@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.showroom-section .center-header h2 {
+  color: var(--color-red, #dc2626) !important;
+}
+
 
 
 .marquee-wrapper {

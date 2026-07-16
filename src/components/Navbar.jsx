@@ -81,117 +81,179 @@ const Navbar = () => {
             <img src={`${import.meta.env.BASE_URL}images/new_logo.png`} alt="Print & Copy" style={{ height: '50px' }} />
           </Link>
         </div>
-        
-        <nav className="navbar-nav desktop-only">
-          
-          <div className="nav-dropdown">
-            <Link to="/products" className="nav-link">
-              Shop <ChevronDown size={14} className="dropdown-icon" />
-            </Link>
-            <div className="nav-dropdown-menu">
-              
-              <div className="nested-dropdown">
-                <div className="nav-dropdown-item with-arrow">
-                  Shop By Industry <ChevronRight size={14} />
-                </div>
-                <div className="nested-dropdown-menu">
-                  {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
-                    <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
-                      {sub}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div className="nested-dropdown">
-                <div className="nav-dropdown-item with-arrow">
-                  Shop By Occasion <ChevronRight size={14} />
-                </div>
-                <div className="nested-dropdown-menu">
-                  {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
-                    <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
-                      {sub}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <Link to="/category/business-essentials" className="nav-dropdown-item">Business Essentials</Link>
-              <Link to="/category/led-boards" className="nav-dropdown-item">LED Boards & Signages</Link>
-              <Link to="/category/awards" className="nav-dropdown-item">Awards & Mementoes</Link>
-              <Link to="/category/gifting" className="nav-dropdown-item">Gifting</Link>
-              <Link to="/category/b2b-services" className="nav-dropdown-item">B2B Services</Link>
-              <Link to="/blogs" className="nav-dropdown-item">Blogs</Link>
-
-            </div>
-          </div>
-
-          <Link to="/about" className="nav-link">About Us</Link>
-          <Link to="/contact" className="nav-link">Contact Us</Link>
-        </nav>
 
         <div className="navbar-right">
-          <button 
-            className={`icon-btn ${isSearchOpen ? 'active' : ''}`} 
-            onClick={() => {
-              setIsSearchOpen(!isSearchOpen);
-              if (isSearchOpen) setSearchQuery('');
-            }}
-            aria-label="Toggle search"
-          >
-            {isSearchOpen ? <X size={20} /> : <Search size={20} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Search Overlay Dropdown */}
-      {isSearchOpen && (
-        <div className="search-overlay">
-          <div className="container search-container">
-            <div className="search-input-wrapper">
-              <Search size={20} className="search-input-icon" />
-              <input 
-                type="text" 
-                className="search-input" 
-                placeholder="Search for products, categories, or services..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                autoFocus
-              />
-              {searchQuery && (
-                <button className="clear-search-btn" onClick={() => setSearchQuery('')}>
-                  <X size={20} />
-                </button>
-              )}
-            </div>
+          <div className="header-search-box desktop-only">
+            <input 
+              type="text" 
+              placeholder="Search for products, categories, or services..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="clear-btn" onClick={() => setSearchQuery('')} style={{ marginRight: '8px' }}>
+                <X size={16} />
+              </button>
+            )}
+            <Search size={18} className="search-icon" />
             
             {searchQuery && (
-              <div className="search-results">
+              <div className="header-search-results">
                 {searchResults.length > 0 ? (
                   searchResults.map(result => (
                     <Link 
                       key={result.id} 
                       to={result.link} 
                       className="search-result-item"
-                      onClick={() => {
-                        setIsSearchOpen(false);
-                        setSearchQuery('');
-                      }}
+                      onClick={() => setSearchQuery('')}
                     >
                       <span className="result-title">{result.title}</span>
                       <span className={`result-badge ${result.type.toLowerCase()}`}>{result.type}</span>
                     </Link>
                   ))
                 ) : (
-                  <div className="no-results">
-                    No results found for "{searchQuery}"
-                  </div>
+                  <div className="no-results">No results found for "{searchQuery}"</div>
                 )}
               </div>
             )}
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Second row for navigation links on desktop */}
+      <div className="navbar-bottom-row desktop-only">
+        <div className="container">
+          <nav className="navbar-nav">
+            {/* Shop By Industry Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/products" className="nav-link">
+                Shop By Industry <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {['Branding & Advertising', 'Business & Corporate', 'Education', 'Events', 'Healthcare', 'Hotels & Restaurants', 'Home Decor & Design'].map((sub, i) => (
+                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Shop By Occasion Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/products" className="nav-link">
+                Shop By Occasion <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {['Award Night', 'Celebrations', 'Corporate Events', 'Weddings'].map((sub, i) => (
+                  <Link key={i} to={`/category/${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Other Categories and Links directly in header navbar */}
+            <Link to="/category/business-essentials" className="nav-link">Business Essentials</Link>
+
+            {/* LED Boards Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/category/led-boards" className="nav-link">
+                LED Boards <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {['Acrylic Letterboards', 'Steel Letterboards', 'Router-Cut Boards', 'Glow Sign Boards', 'Backlit Logos', 'NEON Boards', 'Lollipop Signages'].map((sub, i) => (
+                  <Link key={i} to={`/category/led-boards#${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Awards & Mementoes Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/category/awards" className="nav-link">
+                Awards & Mementoes <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {['Certificates', 'Trophies', 'Medals', 'Economy Mementoes', 'Wooden Mementoes', 'Acrylic Mementoes', 'Glass Mementoes', 'Corporate Mementoes', 'Premium Mementoes', 'Retirement Mementoes', 'Customized Mementoes', 'Executive Mementoes'].map((sub, i) => (
+                  <Link key={i} to={`/category/awards#${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Gifting Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/category/gifting" className="nav-link">
+                Gifting <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {['Mugs', 'Tshirts', 'Wooden Engraving', 'Stone Engraving', 'Fridge Magnets', 'Photoframe', 'LED Photoframe'].map((sub, i) => (
+                  <Link key={i} to={`/category/gifting#${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* B2B Services Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/category/b2b-services" className="nav-link">
+                B2B Services <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {[
+                  'Digital Printing',
+                  'Offset Printing',
+                  'UV Printing',
+                  'Sublimation Printing',
+                  'Laser Cutting',
+                  'Laser Engraving',
+                  'Flex Printing',
+                  'Vinyl Printing',
+                  'Photoframing',
+                  'Lamination & Binding',
+                  'Installation & Recci',
+                  'Graphics Designing',
+                  'Photocopy & Scanning'
+                ].map((sub, i) => (
+                  <Link key={i} to={`/category/b2b-services#${sub.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="nav-dropdown-item">
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link to="/blogs" className="nav-link">Blogs</Link>
+
+            {/* About Us Dropdown */}
+            <div className="nav-dropdown">
+              <Link to="/about" className="nav-link">
+                About Us <ChevronDown size={14} className="dropdown-icon" />
+              </Link>
+              <div className="nav-dropdown-menu">
+                {[
+                  { name: 'About the Brand', link: '/about#brand' },
+                  { name: 'Founded', link: '/about#founded' },
+                  { name: 'Tagline', link: '/about#tagline' },
+                  { name: 'Our Team', link: '/about#team' },
+                  { name: 'MD Message', link: '/about#md-message' },
+                  { name: 'Social Media', link: '/about#social' },
+                  { name: 'Contact Us', link: '/contact' },
+                  { name: 'Address', link: '/about#address' }
+                ].map((sub, i) => (
+                  <Link key={i} to={sub.link} className="nav-dropdown-item">
+                    {sub.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+
 
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
@@ -233,7 +295,7 @@ const Navbar = () => {
                 </div>
 
                 <Link to="/category/business-essentials" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Business Essentials</Link>
-                <Link to="/category/led-boards" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>LED Boards & Signages</Link>
+                <Link to="/category/led-boards" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>LED Boards</Link>
                 <Link to="/category/awards" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Awards & Mementoes</Link>
                 <Link to="/category/gifting" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Gifting</Link>
                 <Link to="/category/b2b-services" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>B2B Services</Link>

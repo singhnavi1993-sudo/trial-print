@@ -223,3 +223,31 @@
   border-top: 1px solid #e5e7eb;
   margin-top: 1rem;
 }
+
+/* Toggle Hide Action Button & States */
+.action-btn.toggle-hide {
+  color: #4b5563; /* Slate gray by default */
+}
+
+.action-btn.toggle-hide:hover {
+  background-color: #f3f4f6;
+}
+
+.action-btn.toggle-hide.hidden-active {
+  color: #d97706; /* Warning/orange when hidden */
+}
+
+.action-btn.toggle-hide.hidden-active:hover {
+  background-color: #fef3c7;
+}
+
+/* Visual state for hidden table rows */
+.product-row-hidden {
+  opacity: 0.65;
+  background-color: #fafafa;
+}
+
+.badge-hidden {
+  background-color: #fee2e2;
+  color: #991b1b;
+}

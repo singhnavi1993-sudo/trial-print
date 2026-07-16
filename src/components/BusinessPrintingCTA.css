@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.business-printing-cta {
+  position: relative;
+  width: 100%;
+  min-height: 280px; /* Reduced from 400px to squeeze height */
+  /* Set the red-orange brand background on the section itself */
+  background: linear-gradient(135deg, #ff4328 0%, #dc2626 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.cta-bg-image-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain; /* Prevents stretching and preserves sharpness */
+  background-position: right center;
+  background-attachment: fixed; /* Parallax Scrolling Animation */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cta-container {
+  position: relative;
+  z-index: 2;
+  padding-top: 50px; /* Reduced from 100px to squeeze height */
+  padding-bottom: 50px; /* Reduced from 100px to squeeze height */
+  padding-left: 15rem; /* Increased spacing on the left side of the screen */
+  margin-left: 0; /* Align container to the left of the screen instead of centering */
+}
+
+.cta-content-row {
+  display: flex;
+  width: 100%;
+}
+
+.cta-text-column {
+  flex: 0 0 50%;
+  max-width: 50%;
+  color: var(--color-white, #ffffff);
+  text-align: left; /* Explicitly left-align the text column on desktop */
+}
+
+.cta-spacer-column {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.cta-subtitle {
+  font-family: var(--font-primary, 'Outfit', sans-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #FFFB00; /* Bright yellow for high contrast and readability */
+  display: block;
+  margin-bottom: 0.25rem; /* Reduced from 0.5rem to squeeze height */
+}
+
+.cta-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--color-white, #ffffff);
+  margin-bottom: 0.75rem; /* Reduced from 1.5rem to squeeze height */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem; /* Reduced from 2.5rem to squeeze height */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Explicitly left-align actions on desktop */
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cta-phone-btn {
+  background-color: var(--color-white, #ffffff);
+  color: #ff4328;
+}
+
+.cta-phone-btn:hover {
+  background-color: #f4f4f5;
+  color: #b91c1c;
+}
+
+.cta-whatsapp-btn {
+  background-color: #25d366; /* Official WhatsApp Green */
+  color: var(--color-white, #ffffff);
+}
+
+.cta-whatsapp-btn:hover {
+  background-color: #20ba5a;
+}
+
+.cta-phone-number {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start; /* Explicitly left-align phone number block */
+}
+
+.cta-phone-number .phone-link {
+  color: var(--color-white, #ffffff);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.cta-phone-number .phone-link:hover {
+  color: #212121;
+}
+
+/* Animations & Micro-interactions */
+.btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover .btn-icon {
+  transform: scale(1.15);
+}
+
+.cta-whatsapp-btn:hover .whatsapp-icon {
+  animation: pulseWhatsApp 1s infinite alternate;
+}
+
+@keyframes pulseWhatsApp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2) rotate(5deg); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .cta-text-column {
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+  .cta-spacer-column {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-printing-cta {
+    background-attachment: scroll; /* Disable parallax on touch devices for performance */
+    min-height: auto;
+  }
+  
+  .cta-container {
+    padding-top: 40px; /* Reduced from 60px to squeeze height */
+    padding-bottom: 40px; /* Reduced from 60px to squeeze height */
+    padding-left: 10rem; /* Increased spacing on the left for tablet/mobile */
+    padding-right: 2rem;
+  }
+
+  .cta-text-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: left; /* Changed from center to left */
+  }
+
+  .cta-spacer-column {
+    display: none;
+  }
+
+  .cta-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-actions {
+    justify-content: flex-start; /* Changed from center to flex-start */
+    gap: 1rem;
+  }
+
+  .cta-phone-number {
+    justify-content: flex-start; /* Changed from center to flex-start */
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-btn {
+    justify-content: center;
+  }
+}
+
+/* Inline Simple Text Layout */
+.cta-contact-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-white, #ffffff);
+  flex-wrap: wrap;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cta-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-white, #ffffff);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.cta-inline-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.cta-text-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cta-text-icon.phone-icon {
+  color: var(--color-white, #ffffff);
+}
+
+.cta-text-icon.whatsapp-icon {
+  color: #25d366; /* Official WhatsApp green logo */
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.cta-phone-number-link {
+  color: var(--color-white, #ffffff);
+  font-weight: 800;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.cta-phone-number-link:hover {
+  border-bottom-color: var(--color-white, #ffffff);
+  color: #f59e0b; /* Yellow hover accent */
+}
+
+@media (max-width: 768px) {
+  .cta-contact-text {
+    font-size: 1.2rem;
+    gap: 0.4rem;
+  }
+}

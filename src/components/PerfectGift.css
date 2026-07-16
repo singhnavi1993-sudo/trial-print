@@ -1,13 +1,15 @@
 .perfect-gift-section {
   position: relative;
   z-index: 10;
+  overflow: hidden;
+  padding: 4rem 0;
 }
 
 .gift-header-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .gift-header-container .section-header {
@@ -15,132 +17,131 @@
   margin-bottom: 0;
 }
 
-.slider-wrapper {
+/* 3D Carousel Stage Wrapper */
+.gift-carousel-container {
   position: relative;
-  width: 100%;
-}
-
-.gift-control-btn {
-  position: absolute;
-  top: 40%; /* slightly above center to align with images, not text */
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid #d4cfc9;
-  background: #ffffff;
-  color: #1a1a1a;
+  width: 96%; /* Expanded to fit spaced-out 3D cards */
+  max-width: 1500px;
+  margin: 0 auto;
+  overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.gift-control-btn.btn-left {
-  left: -24px;
-}
-
-.gift-control-btn.btn-right {
-  right: -24px;
-}
-
-.gift-control-btn:hover {
-  background: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
-}
-
-.gift-slider {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1.5rem;
-  /* Hide scrollbar */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  align-items: center;
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+  perspective: 1400px; /* Crucial for 3D rotateY perspective depth */
   user-select: none;
+  
+  /* Glassmorphism panel styling */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.04), 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-.gift-slider.is-dragging {
-  scroll-behavior: auto;
-  scroll-snap-type: none;
+body:not(.dark-mode) .gift-carousel-container {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.015);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
 }
 
-.gift-slider::-webkit-scrollbar {
-  display: none;
+/* 3D Container Track */
+.gift-carousel-track {
+  position: relative;
+  width: 320px; /* Width of a single card changed from 280px */
+  height: 360px; /* Matches card content layout height changed from 320px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d; /* Crucial for showing child transform in 3D */
 }
 
-.gift-card {
-  flex: 0 0 250px;
-  scroll-snap-align: start;
+/* Individual Card Frame (Positioned at center stacked on top of each other) */
+.gift-carousel-card {
+  position: absolute;
+  width: 320px; /* Changed from 280px to make images even bigger */
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.6s ease;
+  user-select: none;
+  cursor: grab;
 }
 
+.gift-carousel-card:active {
+  cursor: grabbing;
+}
+
+/* Card image wrapper with rounded borders */
 .gift-img-wrapper {
   position: relative;
   width: 100%;
-  height: 300px;
-  border-radius: 12px;
+  height: 280px; /* Landscape aspect ratio changed from 240px */
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+  background-color: var(--color-gray-100);
+  transition: box-shadow 0.4s ease;
+}
+
+.gift-carousel-card.is-active .gift-img-wrapper {
+  box-shadow: 0 15px 35px rgba(220, 38, 38, 0.25); /* Accent shadow for active card */
 }
 
 .gift-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-  pointer-events: none; /* Prevent native image drag */
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
 }
 
-.gift-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* subtle dark overlay instead of red */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gift-overlay span {
-  color: var(--color-white);
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-}
-
-.gift-card:hover .gift-img-wrapper img {
-  transform: scale(1.1);
-}
-
-.gift-card:hover .gift-overlay {
-  opacity: 1;
-}
-
-.gift-card:hover .gift-overlay span {
-  transform: translateY(0);
+/* Active card interaction states */
+.gift-carousel-card.is-active:hover .gift-img-wrapper img {
+  transform: scale(1.08); /* Subtle zoom when active card is hovered */
 }
 
 .gift-name {
   font-family: var(--font-primary);
   font-size: 1.2rem;
+  font-weight: 700;
   text-align: center;
-  color: var(--color-white);
+  color: var(--color-white, #ffffff);
+  margin-top: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 body:not(.dark-mode) .gift-name {
-  color: var(--color-black);
+  color: var(--color-black, #000000);
+}
+
+.gift-carousel-card.is-active:hover .gift-name {
+  color: var(--color-yellow, #f59e0b);
+}
+
+/* Mobile & Tablet tweaks */
+@media (max-width: 768px) {
+  .gift-carousel-container {
+    perspective: 1000px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .gift-carousel-track {
+    width: 250px;
+    height: 250px;
+  }
+
+  .gift-carousel-card {
+    width: 250px;
+  }
+
+  .gift-img-wrapper {
+    height: 180px;
+  }
+
+  .gift-name {
+    font-size: 1.05rem;
+  }
 }

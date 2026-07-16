@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, X } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Eye, EyeOff } from 'lucide-react';
 import { getProducts, addProduct, updateProduct, deleteProduct, getCategories } from '../services/db';
 import './AdminProducts.css';
 
@@ -40,7 +40,8 @@ const AdminProducts = () => {
         
       setFormData({
         ...product,
-        categories: productCategories
+        categories: productCategories,
+        isHidden: product.isHidden || false
       });
     } else {
       setEditingProduct(null);
@@ -50,6 +51,7 @@ const AdminProducts = () => {
         price: '',
         image: '',
         isBestSeller: false,
+        isHidden: false,
         order: products.length + 1
       });
     }
@@ -129,6 +131,17 @@ const AdminProducts = () => {
     }
   };
 
+  const handleToggleHide = async (product) => {
+    try {
+      const updated = { ...product, isHidden: !product.isHidden };
+      await updateProduct(updated);
+      await loadData();
+    } catch (error) {
+      console.error("Error toggling product visibility:", error);
+      alert("Failed to update product visibility.");
+    }
+  };
+
   const renderCategories = (product) => {
     if (product.categories && product.categories.length > 0) {
       return product.categories.join(', ');
@@ -160,11 +173,16 @@ const AdminProducts = () => {
           </thead>
           <tbody>
             {products.sort((a,b) => a.order - b.order).map(product => (
-              <tr key={product.id}>
+              <tr key={product.id} className={product.isHidden ? 'product-row-hidden' : ''}>
                 <td>
                   <img src={product.image} alt={product.title} className="admin-table-img" />
                 </td>
-                <td className="font-medium">{product.title}</td>
+                <td className="font-medium">
+                  {product.title}
+                  {product.isHidden && (
+                    <span className="badge badge-hidden" style={{ marginLeft: '8px' }}>Hidden</span>
+                  )}
+                </td>
                 <td>{renderCategories(product)}</td>
                 <td>{product.price}</td>
                 <td>{product.order}</td>
@@ -177,6 +195,13 @@ const AdminProducts = () => {
                 </td>
                 <td>
                   <div className="action-buttons">
+                    <button 
+                      className={`action-btn toggle-hide ${product.isHidden ? 'hidden-active' : ''}`} 
+                      onClick={() => handleToggleHide(product)}
+                      title={product.isHidden ? "Show Product" : "Hide Product"}
+                    >
+                      {product.isHidden ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
                     <button className="action-btn edit" onClick={() => handleOpenModal(product)}>
                       <Edit2 size={16} />
                     </button>
@@ -249,10 +274,14 @@ const AdminProducts = () => {
                   <input type="number" name="order" value={formData.order} onChange={handleInputChange} min="1" required />
                 </div>
                 
-                <div className="form-group checkbox-group">
+                <div className="form-group checkbox-group" style={{ gap: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                   <label className="checkbox-label">
                     <input type="checkbox" name="isBestSeller" checked={formData.isBestSeller} onChange={handleInputChange} />
                     Mark as Best Seller
+                  </label>
+                  <label className="checkbox-label" style={{ marginTop: '0.25rem' }}>
+                    <input type="checkbox" name="isHidden" checked={formData.isHidden || false} onChange={handleInputChange} />
+                    Hide Product (Hide from main website)
                   </label>
                 </div>
               </div>
