@@ -22,7 +22,8 @@ const AdminSettings = () => {
     bgShowroom: 'transparent',
     bgConfidence: 'transparent',
     bgB2B: 'transparent',
-    bgBulkOrder: 'transparent'
+    bgBulkOrder: 'transparent',
+    instagramFeedUrl: ''
   });
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -109,7 +110,8 @@ const AdminSettings = () => {
       bgB2B: 'transparent',
       bgBulkOrder: 'transparent',
       bgFooter: 'transparent',
-      textFooter: 'transparent'
+      textFooter: 'transparent',
+      instagramFeedUrl: ''
     };
     setTheme(defaultTheme);
     document.documentElement.style.setProperty('--color-red', defaultTheme.accentColor1);
@@ -344,6 +346,43 @@ const AdminSettings = () => {
             <div className="settings-actions">
               <button type="submit" className="btn btn-primary" disabled={isSaving}>
                 {isSaving ? 'Saving...' : <><Save size={16} /> Save Changes</>}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Instagram Integration Card */}
+        <div className="settings-card">
+          <div className="settings-card-header">
+            <h3>Instagram Feed Automation</h3>
+            <p>
+              Connect your live Instagram feed. Because Instagram blocks direct browser scraping, you should use a free helper service like <strong><a href="https://behold.so" target="_blank" rel="noopener noreferrer">Behold.so</a></strong>.
+            </p>
+            <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#666' }}>
+              <strong>Instructions:</strong> Sign up on Behold.so, connect your Instagram account, copy your <strong>JSON Feed URL</strong>, and paste it below.
+            </p>
+          </div>
+          
+          <form className="settings-form" onSubmit={handleSave}>
+            <div className="form-group" style={{ width: '100%' }}>
+              <label>Instagram JSON Feed URL</label>
+              <input 
+                type="url" 
+                name="instagramFeedUrl" 
+                value={theme.instagramFeedUrl || ''} 
+                onChange={handleChange}
+                placeholder="https://behold.so/api/v1/posts?developer=..."
+                className="form-control"
+                style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #ddd', marginTop: '0.5rem' }}
+              />
+              <small style={{ display: 'block', marginTop: '0.4rem', color: '#888' }}>
+                Leave empty to display our default custom print-and-copy placeholder feed.
+              </small>
+            </div>
+
+            <div className="settings-actions" style={{ marginTop: '1.5rem' }}>
+              <button type="submit" className="btn btn-primary" disabled={isSaving}>
+                {isSaving ? 'Saving...' : <><Save size={16} /> Save Feed URL</>}
               </button>
             </div>
           </form>

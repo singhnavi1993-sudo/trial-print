@@ -1,7 +1,7 @@
 .tagline-container {
   width: 100%;
-  background-color: var(--color-yellow, #f59e0b);
-  color: var(--color-black, #000000);
+  background-color: #000000;
+  color: #FFFB00;
   overflow: hidden;
   padding: 8px 0;
   display: flex;
@@ -10,7 +10,7 @@
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.8);
   position: relative;
   z-index: 100;
 }
@@ -30,5 +30,19 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .tagline-container {
+    font-size: 0.8rem;
+    padding: 6px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .tagline-container {
+    font-size: 0.75rem;
+    padding: 5px 0;
   }
 }

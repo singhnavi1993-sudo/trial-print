@@ -2,6 +2,7 @@
   position: relative;
   z-index: 10;
   padding: 4rem 0;
+  border-top: 2px solid #FFFB00;
 }
 
 .b2b-card {
@@ -12,6 +13,34 @@
   box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
   position: relative;
   overflow: hidden;
+  border-left: 4px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
+}
+
+.b2b-card:hover,
+.service-card:hover {
+  border-left: 4px solid #FFFB00;
+}
+
+.icon-circle,
+.service-icon-circle,
+.b2b-icon-circle {
+  background-color: #FFFB00;
+  color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.icon-circle svg,
+.icon-circle i,
+.service-icon-circle svg,
+.service-icon-circle i,
+.b2b-icon-circle svg,
+.b2b-icon-circle i {
+  color: #000000;
+  fill: currentColor;
 }
 
 .b2b-card::before {

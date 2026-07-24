@@ -8,8 +8,8 @@
   --color-gray-200: #e4e4e7;
   --color-gray-800: #18181b;
   --color-gray-900: #09090b;
-  --color-yellow: #f59e0b; /* Deeper gold */
-  --color-red: #dc2626; /* Deeper cinematic red */
+  --color-yellow: #FFFB00; /* Vibrant brand yellow */
+  --color-red: #DC2626; /* Bold brand red */
   
   --font-primary: 'Outfit', sans-serif;
   --font-secondary: 'Inter', sans-serif;
@@ -101,21 +101,23 @@ img {
 }
 
 .btn-primary {
-  background-color: var(--color-black);
+  background-color: var(--color-red);
   color: var(--color-white);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-gray-800);
+  background-color: #b91c1c;
 }
 
 .btn-yellow {
-  background-color: var(--color-yellow);
+  background-color: #FFFB00;
   color: var(--color-black);
+  font-weight: 700;
 }
 
 .btn-yellow:hover {
-  background-color: #f59e0b;
+  background-color: #e6e200;
+  box-shadow: 0 4px 15px rgba(255, 251, 0, 0.3);
 }
 
 .btn-red {
@@ -124,7 +126,18 @@ img {
 }
 
 .btn-red:hover {
-  background-color: #b91c1c; /* Deeper hover red */
+  background-color: #b91c1c;
+}
+
+.btn-outline-yellow {
+  background-color: transparent;
+  color: #FFFB00;
+  border: 2px solid #FFFB00;
+}
+
+.btn-outline-yellow:hover {
+  background-color: #FFFB00;
+  color: #000000;
 }
 
 /* --- Cinematic Animations --- */
@@ -162,14 +175,17 @@ img {
   h3 { font-size: 1.4rem !important; }
   h4 { font-size: 1.2rem !important; }
   
-  .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+  .btn { padding: 0.75rem 1.2rem; font-size: 0.9rem; min-height: 44px; }
 }
 
 @media (max-width: 480px) {
   .container { padding: 0 0.8rem; }
   .section-padding { padding: 1.5rem 0; }
   
-  h1 { font-size: 1.8rem !important; }
-  h2 { font-size: 1.5rem !important; }
-  h3 { font-size: 1.2rem !important; }
+  h1 { font-size: 1.6rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  h3 { font-size: 1.1rem !important; }
+  h4 { font-size: 1rem !important; }
+  
+  .btn { padding: 0.75rem 1rem; font-size: 0.85rem; width: 100%; min-height: 44px; }
 }

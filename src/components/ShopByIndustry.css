@@ -1,10 +1,26 @@
 .industry-section {
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
+  padding: 4rem 0;
 }
 
 .industry-section .section-header h2 {
   color: var(--color-red, #dc2626) !important;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.industry-section .section-header h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #DC2626;
 }
 
 .section-header {
@@ -48,6 +64,7 @@
   align-items: flex-end;
   justify-content: center;
   padding: 1.5rem;
+  min-height: 44px;
 }
 
 @media (max-width: 1200px) {
@@ -57,19 +74,53 @@
 }
 
 @media (max-width: 768px) {
+  .industry-section {
+    padding: 2.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+  }
+
   .industry-grid {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   
   .industry-card {
-    flex: 0 1 calc(50% - 0.75rem); /* 2 columns */
-    height: 220px;
+    flex: 0 1 calc(50% - 0.625rem); /* 2 columns */
+    height: 200px;
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
+  .industry-section {
+    padding: 1.75rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    letter-spacing: 0;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
   .industry-grid {
-    gap: 1.25rem;
+    gap: 1rem;
     width: 100%;
   }
   
@@ -82,12 +133,10 @@
   }
   
   .industry-name {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     word-wrap: break-word;
   }
 }
-
-
 
 .industry-image {
   position: absolute;
@@ -112,8 +161,24 @@
   transition: background 0.4s ease;
 }
 
+.industry-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 251, 0, 0.15);
+  border-bottom: 3px solid #FFFB00;
+}
+
 .industry-card:hover .industry-image {
   transform: scale(1.1);
+}
+
+.view-all-btn, .view-all {
+  background-color: #DC2626;
+  color: #ffffff;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
 }
 
 .industry-name {

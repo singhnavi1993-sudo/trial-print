@@ -17,13 +17,13 @@ const Footer = () => {
       <div className="container footer-container">
         <div className="footer-col brand-col">
           <Link to="/" className="logo footer-logo">
-            <img src={`${import.meta.env.BASE_URL}images/new_logo.png`} alt="Print & Copy" style={{ height: '40px' }} />
+            <img src={`${import.meta.env.BASE_URL}images/footer-bg.png`} alt="Print & Copy" style={{ height: '40px' }} />
           </Link>
           <p className="footer-desc">
             Your premium destination for high-quality commercial printing and copying services. We bring your ideas to life with precision and vibrant colors.
           </p>
           <div className="social-links">
-            <a href="#" className="social-link" aria-label="Instagram"><InstagramIcon /></a>
+            <a href="https://www.instagram.com/printandcopy_centre?igsh=b2VzczVkeWVsMzM5" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram"><InstagramIcon /></a>
             <a href="#" className="social-link" aria-label="Facebook"><FacebookIcon /></a>
             <a href="#" className="social-link" aria-label="Twitter"><TwitterIcon /></a>
           </div>

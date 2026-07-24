@@ -103,7 +103,7 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: var(--color-gray-200);
+  background-color: #e0e0e0;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -112,7 +112,7 @@
 
 .dot.active {
   width: 40px;
-  background-color: var(--color-gray-200);
+  background-color: rgba(255, 251, 0, 0.3);
 }
 
 .dot-fill {
@@ -120,7 +120,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background-color: var(--color-black);
+  background-color: #DC2626;
   width: 0%;
   animation: fillDot linear forwards;
 }
@@ -138,30 +138,78 @@
   }
   .slides-container {
     aspect-ratio: 16 / 9;
+    min-height: 280px;
   }
   .slide {
-    width: 85%; /* Make it 85% so the next one peeks more clearly */
+    width: 88%;
+    border-radius: 16px;
   }
-  .slide-content-wrapper { padding: 0 2rem; }
-  .slide-title { font-size: 2.5rem; }
-  .slide-subtitle { font-size: 1.1rem; }
-  .slider-dots { bottom: 1.5rem; }
+  .slide-content-wrapper {
+    padding: 1.5rem 2rem;
+  }
+  .slide-content {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .slide-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .slide-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .slider-dots {
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .hero-slider {
     margin: 0 auto 0.5rem auto; /* Reset top margin to 0 */
-    padding-top: 0.75rem; /* Spacing for the images only */
+    padding-top: 0.5rem; /* Spacing for the images only */
     width: 100%;
   }
   .slides-container {
-    aspect-ratio: 1 / 1;
-    min-height: 250px;
+    aspect-ratio: 4 / 3;
+    min-height: 240px;
   }
   .slide {
-    width: 90%;
+    width: 94%;
+    border-radius: 12px;
   }
-  .slide-content-wrapper { padding: 0 1rem; }
-  .slide-title { font-size: 1.8rem; }
-  .slider-dots { bottom: 1rem; transform: scale(0.8); }
+  .slide-overlay {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
+  .slide-content-wrapper {
+    padding: 1rem 1.25rem;
+  }
+  .slide-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .slide-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+  .slider-dots {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    gap: 8px;
+  }
+  .dot {
+    height: 8px;
+    padding: 6px 0; /* Expand touch area */
+    background-clip: content-box;
+  }
+  .dot.active {
+    width: 32px;
+  }
 }

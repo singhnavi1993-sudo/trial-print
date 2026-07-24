@@ -58,7 +58,7 @@
 .bulk-form select:focus,
 .bulk-form textarea:focus {
   outline: none;
-  border-color: var(--color-red);
+  border-color: #FFFB00;
   background-color: rgba(255,255,255,0.1);
 }
 
@@ -116,6 +116,12 @@ body:not(.dark-mode) .bulk-form textarea {
 body:not(.dark-mode) .bulk-form input:focus,
 body:not(.dark-mode) .bulk-form select:focus,
 body:not(.dark-mode) .bulk-form textarea:focus {
-  border-color: var(--color-red);
+  border-color: #FFFB00;
   background-color: var(--color-white);
+}
+
+.bulk-form .btn-red,
+.bulk-form button[type="submit"] {
+  background-color: #FFFB00;
+  color: #000000;
 }

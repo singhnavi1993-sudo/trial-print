@@ -46,13 +46,20 @@
   flex: 0 0 350px; /* Fixed width for each column */
   padding: 2rem 1.5rem;
   border-right: 1px solid #e5e5e5;
+  border-bottom: 3px solid transparent;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 }
 
 /* Duplicated elements don't need first-child border-left if it scrolls endlessly, but it's safe */
 .room-decor-card:first-child {
   border-left: 1px solid #e5e5e5;
+}
+
+.room-decor-card:hover,
+.room-card:hover {
+  border-bottom: 3px solid #FFFB00;
 }
 
 .room-decor-img-wrapper {
@@ -85,6 +92,12 @@
   font-weight: 600;
   color: #000000;
   margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.room-decor-card:hover .room-decor-text h3,
+.room-card:hover .room-decor-text h3 {
+  color: #FFFB00;
 }
 
 .room-decor-text span {

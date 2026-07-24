@@ -1,6 +1,7 @@
 .navbar-header {
   background-color: var(--header-bg, var(--bg-primary));
   border-bottom: 1px solid var(--border-color, var(--color-gray-200));
+  border-top: 4px solid #DC2626; /* Red accent line at top */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -163,6 +164,8 @@
 .nav-dropdown-item:hover {
   background-color: var(--bg-secondary, #f3f4f6);
   color: var(--color-red);
+  border-left: 3px solid #FFFB00;
+  padding-left: calc(1.5rem - 3px);
 }
 
 .nav-dropdown-item.with-arrow {
@@ -413,7 +416,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 3px solid #DC2626;
 }
 
 .close-menu-btn {
@@ -515,14 +518,14 @@ body.dark-mode .header-search-box {
 }
 
 .header-search-box:focus-within {
-  border-color: var(--color-red, #dc2626);
+  border-color: #FFFB00;
   background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.08);
+  box-shadow: 0 4px 15px rgba(255, 251, 0, 0.15);
 }
 
 body.dark-mode .header-search-box:focus-within {
   background-color: #121212;
-  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.15);
+  box-shadow: 0 4px 15px rgba(255, 251, 0, 0.2);
 }
 
 .header-search-box .search-icon {
@@ -756,7 +759,7 @@ body.dark-mode .header-search-results .search-result-item:hover {
     align-items: center;
   }
   
-  .logo {
+  .navbar-left .logo {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
@@ -767,7 +770,7 @@ body.dark-mode .header-search-results .search-result-item:hover {
     align-items: center;
   }
   
-  .logo img {
+  .navbar-left .logo img {
     margin: 0 auto !important;
   }
   

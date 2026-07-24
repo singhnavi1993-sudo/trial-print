@@ -1,5 +1,7 @@
 .instagram-section {
   color: #000000;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .instagram-section h2 {
@@ -27,6 +29,7 @@
   gap: 1rem;
   padding-bottom: 2rem;
   perspective: 1000px;
+  width: 100%;
 }
 
 .reel-card {
@@ -55,10 +58,41 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .reels-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .insta-icon-wrap {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 1rem;
+  }
+
+  .insta-follow-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reels-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .insta-follow-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .reel-card {
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
@@ -92,14 +126,59 @@
   opacity: 1;
 }
 
-.play-icon {
-  color: var(--color-white);
+.insta-header-link {
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.insta-header-link:hover {
+  transform: scale(1.03);
+}
+
+.insta-header-link:hover h2 {
+  color: #DC2626 !important;
+}
+
+.reel-overlay svg {
+  color: var(--color-white, #ffffff);
   margin-bottom: 0.5rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
 }
 
 .reel-views {
   font-weight: 600;
   font-size: 1.1rem;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+.insta-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  background: #DC2626;
+  color: #FFFB00 !important;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+  transition: all 0.3s ease;
+}
+
+.insta-follow-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.5);
+}
+
+.insta-follow-btn svg {
+  width: 22px;
+  height: 22px;
 }

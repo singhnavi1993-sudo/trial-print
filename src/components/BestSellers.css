@@ -1,3 +1,7 @@
+.bestsellers-section, .bestsellers-container {
+  overflow-x: hidden;
+}
+
 .center-header {
   display: flex;
   flex-direction: column;
@@ -33,21 +37,59 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
   margin-bottom: 3rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .products-grid {
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .center-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .center-header h2 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-info {
+    padding: 0 0.5rem 1rem 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
+  .center-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .center-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
   .products-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
     width: 100%;
   }
   
@@ -83,9 +125,7 @@
 
 .product-card:hover {
   transform: translateY(-12px) rotateX(4deg) rotateY(-4deg) scale(1.02);
-  box-shadow: 
-    -10px 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(220, 38, 38, 0.15); /* Subtle cinematic glow */
+  box-shadow: 0 8px 25px rgba(255, 251, 0, 0.15);
 }
 
 .product-image-container {
@@ -148,4 +188,28 @@
 
 .product-info {
   padding: 0 0.75rem 1.25rem 0.75rem;
+}
+
+/* Price tag or badge */
+.product-price, .price, .price-tag, .badge {
+  color: #DC2626;
+}
+
+/* Best Seller badge */
+.bestseller-badge, .best-seller-badge, .badge-bestseller {
+  background-color: #FFFB00;
+  color: #000000;
+}
+
+/* Add to Cart or CTA button */
+.add-to-cart-btn, .btn-add-to-cart, .cta-btn, .btn-red, .btn-cta {
+  background-color: #DC2626;
+  color: #ffffff;
+  min-height: 44px;
+  padding: 0.6rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
 }

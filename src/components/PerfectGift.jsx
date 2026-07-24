@@ -208,13 +208,13 @@ const PerfectGift = () => {
               let offset3 = 560;
 
               if (windowWidth < 480) {
-                offset1 = 70;
-                offset2 = 135;
-                offset3 = 190;
+                offset1 = 130;
+                offset2 = 220;
+                offset3 = 290;
               } else if (windowWidth < 768) {
-                offset1 = 95;
-                offset2 = 180;
-                offset3 = 250;
+                offset1 = 170;
+                offset2 = 300;
+                offset3 = 400;
               } else if (windowWidth < 1024) {
                 offset1 = 155;
                 offset2 = 295;

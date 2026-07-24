@@ -1,27 +1,97 @@
 .occasion-section {
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
+  padding: 4rem 0;
 }
 
 .occasion-section .section-header h2 {
   color: var(--color-white, #ffffff);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.occasion-section .section-header h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #DC2626;
 }
 
 .text-yellow {
-  background: linear-gradient(to right, var(--color-yellow), #fcd34d) !important;
+  background: linear-gradient(to right, #FFFB00, #FFFB00) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 .occasion-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
+@media (max-width: 1024px) {
+  .occasion-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .occasion-section {
+    padding: 2.5rem 0;
+  }
+
+  .occasion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .occasion-card {
+    height: 280px;
+  }
+
+  .occasion-content {
+    padding: 1.5rem;
+  }
+
+  .occasion-name {
+    font-size: 1.6rem;
+    transform: translateY(0);
+  }
+
+  .occasion-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .occasion-section {
+    padding: 1.75rem 0;
+  }
+
   .occasion-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .occasion-card {
+    height: 220px;
+  }
+
+  .occasion-content {
+    padding: 1rem;
+  }
+
+  .occasion-name {
+    font-size: 1.25rem;
   }
 }
 
@@ -81,15 +151,34 @@
   font-family: var(--font-secondary);
   font-weight: 600;
   color: var(--color-white);
-  border-bottom: 2px solid var(--color-red);
+  border-bottom: 2px solid #DC2626;
   padding-bottom: 4px;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.4s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.occasion-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 251, 0, 0.15);
+  border-bottom: 3px solid #FFFB00;
 }
 
 .occasion-card:hover .occasion-bg {
   transform: scale(1.1);
+}
+
+.view-all-btn, .view-all {
+  background-color: #DC2626;
+  color: #ffffff;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
 }
 
 .occasion-card:hover .occasion-overlay {
